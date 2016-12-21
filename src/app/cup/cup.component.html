@@ -1,0 +1,21 @@
+<!--<h3>
+  You rolled {{ game.getRollCount() }} times!
+</h3>-->
+<nav>
+  <!--<button *ngIf="game.maxRolls() && !digit.isAdded()" (click)="dices.rollDices(); game.increaseRollCount()">Roll Dice!
+  </button>
+
+  <button *ngIf="digit.isAdded()" (click)="game.nextRound()">
+    Next Round
+  </button>
+
+  <button (click)="dices.selectAll()">
+    Select All!
+  </button>
+
+  <button (click)="dices.unSelectAll()">
+    Unselect All!
+  </button>-->
+</nav>
+<app-dices [dices]="dices$"></app-dices>
+

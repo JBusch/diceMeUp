@@ -1,0 +1,16 @@
+<fieldset class="digits">
+  <app-digit *ngFor="let digit of digits"
+             [digit]="digit"></app-digit>
+  <div class="block-sum-upper">
+    <div class="block-sum-upper-label">
+
+    </div>
+    <div class="block-sum-upper-result">
+      <label>
+        Sum Upper:
+      </label>
+      {{ digitsService.getDigitsSum() }}
+    </div>
+  </div>
+</fieldset>
+

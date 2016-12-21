@@ -1,0 +1,36 @@
+@import "../scss/variables";
+
+:host {
+  font-family: $sans-body;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1 1 0;
+  align-items: center;
+}
+
+main {
+  width: 90vw;
+  background-color: purple;
+  padding: $padding-default;
+  display: flex;
+  flex-wrap: wrap;
+
+  h2 {
+    width: 100%;
+    color: #FFF;
+    font-family: $sans-heading;
+  }
+
+  .content {
+    background-color: #fff;
+    padding: $padding-default;
+    width: calc(75% - 2 * #{$padding-default});
+  }
+
+  .left {
+    padding: $padding-default;
+    width: calc(25% - 2 * #{$padding-default});
+  }
+}

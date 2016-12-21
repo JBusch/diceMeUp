@@ -1,0 +1,10 @@
+@import "dice/dice.component";
+
+app-dices {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  display: block;
+  perspective: 3000px;
+  perspective-origin: -62% -72%;
+}
+

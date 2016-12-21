@@ -1,0 +1,89 @@
+$dice-dimension: 100px;
+$dice-perspective: $dice-dimension / 2;
+
+app-dice {
+  display: inline-block;
+  position: relative;
+  //perspective: $dice-dimension * 5;
+  width: $dice-dimension;
+  height: $dice-dimension;
+  margin: 20px;
+}
+
+.dice-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  cursor: pointer;
+  &.selected {
+    figure {
+      background-color: green;
+    }
+  }
+  figure {
+    margin: 0;
+    width: $dice-dimension;
+    height: $dice-dimension;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 1);
+    text-align: center;
+    font-size: 30px;
+    color: #FFF;
+  }
+}
+
+.dice {
+  &-side-1 {
+    transform: rotateY(0deg) translateZ($dice-perspective);
+  }
+  &-side-2 {
+    transform: rotateX(180deg) translateZ($dice-perspective);
+  }
+  &-side-3 {
+    transform: rotateY(90deg) translateZ($dice-perspective);
+  }
+  &-side-4 {
+    transform: rotateY(-90deg) translateZ($dice-perspective);
+  }
+  &-side-5 {
+    transform: rotateX(90deg) translateZ($dice-perspective);
+  }
+  &-side-6 {
+    transform: rotateX(-90deg) translateZ($dice-perspective);
+  }
+  //&-1 {
+  //  left: 0;
+  //}
+  //&-2 {
+  //  left: 100px;
+  //}
+  //&-3 {
+  //  left: 200px;
+  //}
+  //&-4 {
+  //  left: 300px;
+  //}
+  //&-5 {
+  //  left: 400px;
+  //}
+  &-show-1 {
+    transform: translateZ($dice-perspective) rotateY(0deg);
+  }
+  &-show-2 {
+    transform: translateZ($dice-perspective) rotateX(-180deg);
+  }
+  &-show-3 {
+    transform: translateZ($dice-perspective) rotateY(-90deg);
+  }
+  &-show-4 {
+    transform: translateZ($dice-perspective) rotateY(90deg);
+  }
+  &-show-5 {
+    transform: translateZ($dice-perspective) rotateX(-90deg);
+  }
+  &-show-6 {
+    transform: translateZ($dice-perspective) rotateX(90deg);
+  }
+}

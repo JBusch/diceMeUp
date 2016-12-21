@@ -1,0 +1,24 @@
+<div class="digit">
+  {{ bla | async }}
+  <div class="digit-item">
+    <label class="digit-item-lanel"> {{ digit.label }}</label>
+    <input
+      disabled="disabled"
+      name="digit"
+      class="digit-value"
+      type="text"
+      #digitRef="ngModel"
+      [(ngModel)]="digit.value"
+    >
+  </div>
+  <div class="digit-control">
+    <button (click)="add(digit)" *ngIf="!digit.added" [disabled]="digitService.added">
+      add
+    </button>
+    <button *ngIf="digitService.added && digit.added && !digit.locked" (click)="remove(digit)">
+      remove
+    </button>
+
+    <button type="button" (click)="increment(digit)">INCREMENT</button>
+  </div>
+</div>
