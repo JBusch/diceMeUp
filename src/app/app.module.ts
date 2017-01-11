@@ -28,6 +28,7 @@ import {DiceActions} from "./dices/dice/dice.actions";
 import {ResultCupComponent} from "./result-cup/result-cup.component";
 import {DicesActions} from "./dices/dices.actions";
 import {digitsReducer} from "./digits/digits.reducer";
+import {DigitsActions} from "./digits/digits.actions";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {digitsReducer} from "./digits/digits.reducer";
   ],
   providers: [
     DigitActions,
+    DigitsActions,
     DigitsService,
     DiceService,
     DiceActions,

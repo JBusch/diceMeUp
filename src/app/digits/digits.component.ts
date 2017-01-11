@@ -23,13 +23,5 @@ export class DigitsComponent implements OnInit {
   ngOnInit() {
     this.digits$ = this._store.select('digits');
   }
-
-
-  // ngDoCheck() {
-  //   this.isDigitAdded = this.digits.some((digit) => {
-  //     return digit.added;
-  //   });
-  //   console.log(this.isDigitAdded);
-  // }
-
+  
 }

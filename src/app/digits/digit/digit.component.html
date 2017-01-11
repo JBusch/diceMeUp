@@ -11,7 +11,7 @@
     >
   </div>
   <div class="digit-control">
-    <button (click)="add(digit)" *ngIf="!digit.added">
+    <button (click)="add(digit)" *ngIf="!digit.added" [disabled]="digit.disabled">
       add
     </button>
     <button *ngIf="digit.added && !digit.locked" (click)="remove(digit)">

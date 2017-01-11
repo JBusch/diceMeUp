@@ -7,21 +7,11 @@ import {Digit} from "./digit/digit.model";
 
 export class DigitsActions {
 
-  static ADD = '[Digits] Increment Add';
+  static DISABLE = '[Digits] Disable';
 
-  add(digit: Digit, value: number): Action {
+  disable(): Action {
     return {
-      type: DigitsActions.ADD,
-      payload: Object.assign({}, digit, digit.value = value)
-    };
-  }
-
-  static RESET = '[Digits] Reset Digit';
-
-  reset(digit: Digit): Action {
-    return {
-      type: DigitsActions.RESET,
-      payload: Object.assign({}, digit, digit.value = 0)
+      type: DigitsActions.DISABLE
     };
   }
 }

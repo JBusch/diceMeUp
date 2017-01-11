@@ -11,30 +11,20 @@ export class DigitActions {
 
   static REMOVE = '[Digit] Remove Digit';
 
-  /*REMOVE(digit: Digit): Action {
-   return {
-   type: DigitActions.REMOVE,
-   payload: Object.assign({}, digit, digit.value++)
-   };
-   }
-
-   remove(digit): void {
-   digit.value = 0;
-   this.added = false;
-   digit.added = false;
-   }
-
-   setLocked(digit) {
-   digit.locked = true;
-   }*/
+  remove(digit: Digit): Action {
+    return {
+      type: DigitActions.REMOVE,
+      payload: Object.assign({}, digit)
+    };
+  }
 
 
-  static ADD = '[Digit] Increment Add';
+  static ADD = '[Digit] Add Digit';
 
   add(digit: Digit, value: number): Action {
     return {
       type: DigitActions.ADD,
-      payload: Object.assign({}, digit, digit.value = value)
+      payload: {digit, value}
     };
   }
 

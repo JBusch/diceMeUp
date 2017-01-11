@@ -5,6 +5,7 @@ import {DigitActions} from "./digit.actions";
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {Digit} from "./digit.model";
+import {DigitsActions} from "../digits.actions";
 
 
 @Component({
@@ -16,24 +17,19 @@ export class DigitComponent implements OnInit {
 
   @Input() digit;
   @Input() selectedDices;
-  // digit$: Observable<any>;
 
-  constructor(private digitService: DigitsService,
+  constructor(private digitsActions: DigitsActions,
               private digitActions: DigitActions,
               private _store: Store<any>) {
-
-    // this.digit$ = this._store.select('digit');
   }
 
   ngOnInit() {
   }
 
-  @Output() digitUpdated = new EventEmitter();
-
   remove(digit): void {
-    return this.digitService.remove(digit);
+    console.log(digit);
+    this._store.dispatch(this.digitActions.remove(digit));
   }
-
 
   add(digit: Digit): void {
     this.selectedDices.subscribe((dices) => {
@@ -44,10 +40,11 @@ export class DigitComponent implements OnInit {
           }
         });
         digit.added = true;
+
         this._store.dispatch(this.digitActions.add(digit, value));
-      }
+        this._store.dispatch(this.digitsActions.disable());
+      },
     );
-    console.log(digit);
   }
 
 }
