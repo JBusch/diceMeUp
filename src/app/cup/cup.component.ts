@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Dice} from "../dices/dice/dice.model";
+import {CupActions} from "./cup.actions";
 
 @Component({
   selector: 'app-cup',
@@ -12,8 +13,9 @@ export class CupComponent implements OnInit {
   private title: string = 'Gameboard';
   dices$: Observable<Dice[]>;
 
-  constructor(_store: Store<any>) {
-    this.dices$ = _store.select('dices').pluck('dices');
+  constructor(private _store: Store<any>,
+              private cupActions: CupActions) {
+    this.dices$ = this._store.select('dices').pluck('dices');
   }
 
   // constructor(private game: GameService,
@@ -22,6 +24,10 @@ export class CupComponent implements OnInit {
   // }
 
   ngOnInit() {
+  }
+
+  rollDice() {
+    this._store.dispatch(this.cupActions.ROLLDICE());
   }
 
 }

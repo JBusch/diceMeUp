@@ -6,6 +6,7 @@ import {Dice} from './dice/dice.model';
 import {startWith} from "rxjs/operator/startWith";
 import {DiceActions} from "./dice/dice.actions";
 import 'rxjs/add/operator/map';
+import {CupActions} from "../cup/cup.actions";
 
 export const DicesState = {
   dices: [
@@ -42,7 +43,7 @@ const comparator = 'id';
 export function dicesReducer(state = DicesState, action: Action) {
   switch (action.type) {
 
-    case DicesActions.ROLLDICE: {
+    case CupActions.ROLLDICE: {
       let dices = state.dices;
       dices.forEach((dice) => {
         dice.activeSide = (Math.floor(Math.random() * 6) + 1);

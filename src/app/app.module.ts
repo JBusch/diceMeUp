@@ -10,7 +10,7 @@ import {RouteDefinitions} from './app.routes';
 import {RouterModule} from "@angular/router";
 import {DigitComponent} from './digits/digit/digit.component';
 import {digitReducer} from "./digits/digit/digit.reducer";
-
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 // ngrx
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -29,6 +29,7 @@ import {ResultCupComponent} from "./result-cup/result-cup.component";
 import {DicesActions} from "./dices/dices.actions";
 import {digitsReducer} from "./digits/digits.reducer";
 import {DigitsActions} from "./digits/digits.actions";
+import {CupActions} from "./cup/cup.actions";
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import {DigitsActions} from "./digits/digits.actions";
       digits: digitsReducer,
       digit: digitReducer
     }),
-    // StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [
     DigitActions,
@@ -62,7 +63,8 @@ import {DigitsActions} from "./digits/digits.actions";
     DigitsService,
     DiceService,
     DiceActions,
-    DicesActions
+    DicesActions,
+    CupActions
   ],
   bootstrap: [AppComponent]
 })

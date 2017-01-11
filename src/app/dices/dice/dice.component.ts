@@ -33,12 +33,10 @@ export class DiceComponent {
   }
 
   selectDice(dice) {
-    // console.log(dice);
     this._store.dispatch(this.diceActions.SELECTDICE(dice));
   }
 
   unSelectDice(dice) {
-    console.log('unselect!!!');
     this._store.dispatch(this.diceActions.UNSELECTDICE(dice));
   }
 

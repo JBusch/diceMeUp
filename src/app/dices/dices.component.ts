@@ -59,10 +59,4 @@ export class DicesComponent implements OnInit {
   // ngAfterViewInit() {
   //   const hostElement = this.element.nativeElement;
   // }
-
-  rollDice() {
-    this._store.dispatch(this.dicesActions.ROLLDICE());
-  }
-
-
 }

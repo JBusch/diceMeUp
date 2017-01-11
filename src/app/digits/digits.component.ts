@@ -23,5 +23,5 @@ export class DigitsComponent implements OnInit {
   ngOnInit() {
     this.digits$ = this._store.select('digits');
   }
-  
+
 }

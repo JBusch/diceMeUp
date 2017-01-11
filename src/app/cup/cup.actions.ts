@@ -1,19 +1,25 @@
 /* tslint:disable: member-ordering */
 import {Injectable} from '@angular/core';
-import {Response} from '@angular/http';
 import {Action} from '@ngrx/store';
 
-import {Dice} from './dice/dice.model';
 
 @Injectable()
 
-export class DicesActions {
+export class CupActions {
+
+  static ROLLDICE = '[Cup] Roll Dices';
+
+  ROLLDICE(): Action {
+    return {
+      type: CupActions.ROLLDICE
+    };
+  }
 
   // static SELECTDICE = '[Dice] Select Dice';
   //
   // SELECTDICE(dice: Dice): Action {
   //   return {
-  //     type: DicesActions.SELECTDICE,
+  //     type: CupActions.SELECTDICE,
   //     payload: Object.assign({}, dice)
   //   };
   // }
@@ -22,18 +28,17 @@ export class DicesActions {
   //
   // UNSELECTDICE(dice: Dice): Action {
   //   return {
-  //     type: DicesActions.UNSELECTDICE,
+  //     type: CupActions.UNSELECTDICE,
   //     payload: Object.assign({}, dice)
   //   };
   // }
-
 
 
   // static UNSELECTDICE = '[Dice] Unselect Dice';
   //
   // UNSELECTDICE(dice: Dice): Action {
   //   return {
-  //     type: DicesActions.UNSELECTDICE,
+  //     type: CupActions.UNSELECTDICE,
   //     payload: Object.assign({}, dice)
   //   };
   // }

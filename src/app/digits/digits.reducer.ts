@@ -50,7 +50,7 @@ export const DigitsState: Digit[] = [
   {
     id: 6,
     label: '6er',
-    value: 0,
+    value: 666,
     added: false,
     locked: false,
     disabled: false
@@ -67,6 +67,16 @@ export function digitsReducer(state = DigitsState, action: Action) {
       return state.map((digit: Digit) => {
         if (digit.id === action.payload.digit.id) {
           digit.value = action.payload.value;
+        }
+        return digit;
+      });
+    }
+
+    case DigitActions.REMOVE: {
+      console.log(action.payload, state);
+      return state.map((digit: Digit) => {
+        if (digit.id === action.payload.id) {
+          digit.value = 0;
         }
         return digit;
       });
