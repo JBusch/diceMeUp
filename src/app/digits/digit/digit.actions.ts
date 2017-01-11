@@ -12,38 +12,29 @@ export class DigitActions {
   static REMOVE = '[Digit] Remove Digit';
 
   /*REMOVE(digit: Digit): Action {
+   return {
+   type: DigitActions.REMOVE,
+   payload: Object.assign({}, digit, digit.value++)
+   };
+   }
+
+   remove(digit): void {
+   digit.value = 0;
+   this.added = false;
+   digit.added = false;
+   }
+
+   setLocked(digit) {
+   digit.locked = true;
+   }*/
+
+
+  static ADD = '[Digit] Increment Add';
+
+  add(digit: Digit, value: number): Action {
     return {
-      type: DigitActions.REMOVE,
-      payload: Object.assign({}, digit, digit.value++)
-    };
-  }
-
-  remove(digit): void {
-    digit.value = 0;
-    this.added = false;
-    digit.added = false;
-  }
-
-  setLocked(digit) {
-    digit.locked = true;
-  }*/
-
-
-  static INCREMENT = '[Digit] Increment Digit';
-
-  increment(digit: Digit): Action {
-    return {
-      type: DigitActions.INCREMENT,
-      payload: Object.assign({}, digit, digit.value++)
-    };
-  }
-
-  static DECREMENT = '[Digit] Decrement Digit';
-
-  decrement(digit: Digit): Action {
-    return {
-      type: DigitActions.DECREMENT,
-      payload: Object.assign({}, digit, digit.value--)
+      type: DigitActions.ADD,
+      payload: Object.assign({}, digit, digit.value = value)
     };
   }
 

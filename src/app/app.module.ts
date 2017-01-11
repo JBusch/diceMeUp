@@ -26,6 +26,8 @@ import {dicesReducer} from "./dices/dices.reducer";
 import {diceReducer} from "./dices/dice/dice.reducer";
 import {DiceActions} from "./dices/dice/dice.actions";
 import {ResultCupComponent} from "./result-cup/result-cup.component";
+import {DicesActions} from "./dices/dices.actions";
+import {digitsReducer} from "./digits/digits.reducer";
 
 @NgModule({
   declarations: [
@@ -45,14 +47,20 @@ import {ResultCupComponent} from "./result-cup/result-cup.component";
     FormsModule,
     HttpModule,
     RouterModule.forRoot(RouteDefinitions),
-    StoreModule.provideStore({dices: dicesReducer, dice: diceReducer, digit: digitReducer}),
+    StoreModule.provideStore({
+      dices: dicesReducer,
+      dice: diceReducer,
+      digits: digitsReducer,
+      digit: digitReducer
+    }),
     // StoreDevtoolsModule.instrumentOnlyWithExtension()
   ],
   providers: [
     DigitActions,
     DigitsService,
     DiceService,
-    DiceActions
+    DiceActions,
+    DicesActions
   ],
   bootstrap: [AppComponent]
 })

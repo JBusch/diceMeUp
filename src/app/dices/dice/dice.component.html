@@ -1,7 +1,6 @@
 <div *ngIf="!dice.selected" (click)="selectDice(dice)"
      #domDice
      class="dice-container dice-{{ dice.id }} dice-show-{{dice.activeSide}} {{dice.selected ? 'selected' : ''}}">
-  {{ dice | json}}
   <figure class="dice-side-1">1</figure>
   <figure class="dice-side-2">2</figure>
   <figure class="dice-side-3">3</figure>

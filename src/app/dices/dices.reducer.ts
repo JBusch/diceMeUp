@@ -42,6 +42,15 @@ const comparator = 'id';
 export function dicesReducer(state = DicesState, action: Action) {
   switch (action.type) {
 
+    case DicesActions.ROLLDICE: {
+      let dices = state.dices;
+      dices.forEach((dice) => {
+        dice.activeSide = (Math.floor(Math.random() * 6) + 1);
+      });
+
+      return Object.assign(state, dices);
+    }
+
     case DiceActions.SELECTDICE: {
       let dice = action.payload;
       let dices = state.dices.filter(item => item.id !== dice.id);

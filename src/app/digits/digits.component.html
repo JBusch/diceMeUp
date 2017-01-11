@@ -1,6 +1,6 @@
 <fieldset class="digits">
-  <app-digit *ngFor="let digit of digits"
-             [digit]="digit"></app-digit>
+  <app-digit *ngFor="let digit of digits$ | async"
+             [digit]="digit" [selectedDices]="selectedDices$"></app-digit>
   <div class="block-sum-upper">
     <div class="block-sum-upper-label">
 
@@ -9,8 +9,9 @@
       <label>
         Sum Upper:
       </label>
-      {{ digitsService.getDigitsSum() }}
+      <!--{{ digitsService.getDigitsSum() }}-->
     </div>
   </div>
 </fieldset>
-
+<div></div>
+{{ selectedDices$ | async | json }}

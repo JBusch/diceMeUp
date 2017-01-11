@@ -28,7 +28,7 @@ export function diceReducer(state = initialState, action: Action): DiceState {
     // }
 
     default: {
-      console.log('state', {state});
+      // console.log('state', {state});
       return state;
     }
   }

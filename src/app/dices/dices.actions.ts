@@ -27,7 +27,24 @@ export class DicesActions {
   //   };
   // }
 
-  static REMOVE = '[Dice] Remove Dice';
+  static ROLLDICE = '[Dices] Roll Dice';
+
+  ROLLDICE(): Action {
+    return {
+      type: DicesActions.ROLLDICE
+    };
+  }
+
+  // static UNSELECTDICE = '[Dice] Unselect Dice';
+  //
+  // UNSELECTDICE(dice: Dice): Action {
+  //   return {
+  //     type: DicesActions.UNSELECTDICE,
+  //     payload: Object.assign({}, dice)
+  //   };
+  // }
+
+  // static REMOVE = '[Dice] Remove Dice';
 
   /*REMOVE(dice: Dice): Action {
    return {

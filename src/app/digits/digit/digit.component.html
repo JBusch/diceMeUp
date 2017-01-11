@@ -1,5 +1,4 @@
 <div class="digit">
-  {{ bla | async }}
   <div class="digit-item">
     <label class="digit-item-lanel"> {{ digit.label }}</label>
     <input
@@ -12,13 +11,11 @@
     >
   </div>
   <div class="digit-control">
-    <button (click)="add(digit)" *ngIf="!digit.added" [disabled]="digitService.added">
+    <button (click)="add(digit)" *ngIf="!digit.added">
       add
     </button>
-    <button *ngIf="digitService.added && digit.added && !digit.locked" (click)="remove(digit)">
+    <button *ngIf="digit.added && !digit.locked" (click)="remove(digit)">
       remove
     </button>
-
-    <button type="button" (click)="increment(digit)">INCREMENT</button>
   </div>
 </div>

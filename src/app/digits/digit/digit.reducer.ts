@@ -23,10 +23,8 @@ export const initialState: DigitState = {
 export function digitReducer(state = initialState, action: Action): DigitState {
   switch (action.type) {
 
-    case DigitActions.INCREMENT: {
-      return Object.assign({}, state, {
-        digit: action.payload
-      });
+    case DigitActions.ADD: {
+      return Object.assign({}, state);
     }
 
     default: {

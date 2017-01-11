@@ -1,5 +1,7 @@
 :host {
   display: flex;
+  flex: 1 1 0;
+  justify-content: space-around;
 }
 
 app-result-cup {

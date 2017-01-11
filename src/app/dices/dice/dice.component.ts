@@ -19,7 +19,7 @@ export class DiceComponent {
               private _store: Store<Dice>,
               private diceActions: DiceActions) {
     this.storeDice$ = this._store.select('dice');
-    this.storeDice$.subscribe(st => console.log('st', st));
+    // this.storeDice$.subscribe(st => console.log('st', st));
   }
 
   @ViewChild('domDice') domDice;
@@ -33,7 +33,7 @@ export class DiceComponent {
   }
 
   selectDice(dice) {
-    console.log(dice);
+    // console.log(dice);
     this._store.dispatch(this.diceActions.SELECTDICE(dice));
   }
 

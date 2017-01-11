@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 // import {GameService} from '../../services/game.service';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
+import {DicesActions} from "./dices.actions";
 
 @Component({
   selector: 'app-dices',
@@ -20,10 +21,8 @@ export class DicesComponent implements OnInit {
 
   constructor(/*private dices: DiceService,*/
               /*private game: GameService,*/
-              element: ElementRef,
-              _store: Store<any>) {
-    this.element = element;
-    // this.dices$ = _store.select('dices').pluck('dices');
+              private _store: Store<any>,
+              private dicesActions: DicesActions) {
   }
 
   ngOnChanges() {
@@ -60,5 +59,10 @@ export class DicesComponent implements OnInit {
   // ngAfterViewInit() {
   //   const hostElement = this.element.nativeElement;
   // }
+
+  rollDice() {
+    this._store.dispatch(this.dicesActions.ROLLDICE());
+  }
+
 
 }

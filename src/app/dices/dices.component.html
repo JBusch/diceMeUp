@@ -1,8 +1,8 @@
 <div class="dices-cup">
-  {{ dices | async | json}}
   <app-dice *ngFor="let dice of dices | async"
             [dice]="dice">
     <!--[class.selected]="isDiceSelected(dice)-->
   </app-dice>
+  <button type="button" (click)="rollDice()">Roll Dice!</button>
 </div>
 
