@@ -18,27 +18,32 @@ export class DigitComponent implements OnInit {
   @Input() digit;
   @Input() selectedDices;
 
+  dices;
+
   constructor(private digitsActions: DigitsActions,
               private digitActions: DigitActions,
               private _store: Store<any>) {
+
   }
 
+
   ngOnInit() {
+    this.selectedDices.subscribe((dices) => {
+      this.dices = dices;
+    });
   }
 
   remove(digit): void {
     this._store.dispatch(this.digitActions.remove(digit));
+    this._store.dispatch(this.digitsActions.enable());
   }
 
   add(digit: Digit): void {
-    this.selectedDices.subscribe((dices) => {
-        let value: number = 0;
-        dices.forEach((dice) => {
-          if (dice.activeSide === digit.id) {
-            value += dice.activeSide;
-          }
-        });
-        digit.added = true;
+    let value: number = 0;
+    this.dices.forEach((dice) => {
+        if (dice.activeSide === digit.id) {
+          value += dice.activeSide;
+        }
 
         this._store.dispatch(this.digitActions.add(digit, value));
         this._store.dispatch(this.digitsActions.disable());

@@ -14,4 +14,12 @@ export class DigitsActions {
       type: DigitsActions.DISABLE
     };
   }
+
+  static ENABLE = '[Digits] Enable';
+
+  enable(): Action {
+    return {
+      type: DigitsActions.ENABLE
+    };
+  }
 }

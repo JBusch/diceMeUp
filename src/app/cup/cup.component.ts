@@ -5,6 +5,7 @@ import {Dice} from "../dices/dice/dice.model";
 import {CupActions} from "./cup.actions";
 import {GameActions} from "../game/game.actions";
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/scan';
 import {DicesActions} from "../dices/dices.actions";
 
 @Component({
@@ -22,16 +23,19 @@ export class CupComponent implements OnInit {
               private gameActions: GameActions,
               private dicesActions: DicesActions) {
     this.dices$ = this._store.select('dices').pluck('dices');
+    //   .scan((acc: Dice[], cur: Dice[]) => {
+    //   console.log(acc, cur);
+    //   acc.forEach((dice, index) => {
+    //     dice.activeSide = cur[index].activeSide;
+    //   });
+    //   return acc;
+    // });
   }
 
   ngOnInit() {
-    this._store.select('dices').pluck('dices').subscribe((res) => {
-      console.log('pluck', res);
-    });
   }
 
   rollDice() {
-
     this._store.dispatch(this.dicesActions.ROLLDICE());
     this._store.dispatch(this.gameActions.INCREMENTROLLS());
   }

@@ -63,32 +63,41 @@ export function digitsReducer(state = DigitsState, action: Action) {
   switch (action.type) {
 
     case DigitActions.ADD: {
-      console.log(action.payload, state);
-      return state.map((digit: Digit) => {
-        if (digit.id === action.payload.digit.id) {
-          digit.value = action.payload.value;
+      let digit: Digit = action.payload.digit;
+      let value: number = action.payload.value;
+      return state.map((olddigit) => {
+        if (olddigit.id === digit.id) {
+          return Object.assign({}, digit, {value: value, added: true});
+        } else {
+          return olddigit;
         }
-        return digit;
       });
     }
 
     case DigitActions.REMOVE: {
-      console.log(action.payload, state);
       return state.map((digit: Digit) => {
         if (digit.id === action.payload.id) {
-          digit.value = 0;
+          return Object.assign({}, digit, {value: 0, added: false});
         }
         return digit;
       });
     }
 
     case DigitsActions.DISABLE: {
-      let digits = state;
-      digits.forEach((digit) => {
-        digit.disabled = true;
+      console.log(state);
+      let digits = state.map((digit) => {
+        console.log(digit);
+        return Object.assign({}, digit, {disabled: true});
       });
+      return digits;
+    }
 
-      return Object.assign(state, digits);
+    case DigitsActions.ENABLE: {
+      console.log(state);
+      let digits = state.map((digit) => {
+        return Object.assign({}, digit, {disabled: false});
+      });
+      return digits;
     }
 
 
