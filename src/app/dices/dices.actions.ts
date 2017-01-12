@@ -8,6 +8,13 @@ import {Dice} from './dice/dice.model';
 @Injectable()
 
 export class DicesActions {
+  static ROLLDICE = '[Dices] Dices rolled';
+
+  ROLLDICE(): Action {
+    return {
+      type: DicesActions.ROLLDICE
+    };
+  }
 
   // static SELECTDICE = '[Dice] Select Dice';
   //
@@ -26,7 +33,6 @@ export class DicesActions {
   //     payload: Object.assign({}, dice)
   //   };
   // }
-
 
 
   // static UNSELECTDICE = '[Dice] Unselect Dice';

@@ -11,54 +11,41 @@ export class DigitsService {
     //private diceService: DiceService
   }
 
-  getDigits(): Digit[] {
-    return this.digits;
-  }
-
-  addRound(): void {
-
-  }
-
-  getDigitsSum() {
-    return this.digits.reduce((a, b) => {
-      return a + b.value;
-    }, 0);
-  }
-
-  /*
-
-   add(digit): void {
-   this.diceService.getSelectedDices().map((dice) => {
-   if (dice.activeSide === digit.id) {
-   digit.value += digit.id;
-   }
-   this.added = true;
-   digit.added = true;
-   });
-   }
-   */
-
-  remove(digit): void {
-    digit.value = 0;
-    this.added = false;
-    digit.added = false;
-  }
-
-  setLocked(digit) {
-    digit.locked = true;
-  }
-
-  isLocked() {
-    return this.isLocked();
-  }
-
-  lockDigits() {
-    this.digits.forEach((digit) => {
-      if (digit.added) {
-        digit.locked = true;
-      }
-    });
-  }
+  // getDigits(): Digit[] {
+  //   return this.digits;
+  // }
+  //
+  // addRound(): void {
+  //
+  // }
+  //
+  // getDigitsSum() {
+  //   return this.digits.reduce((a, b) => {
+  //     return a + b.value;
+  //   }, 0);
+  // }
+  //
+  // remove(digit): void {
+  //   digit.value = 0;
+  //   this.added = false;
+  //   digit.added = false;
+  // }
+  //
+  // setLocked(digit) {
+  //   digit.locked = true;
+  // }
+  //
+  // isLocked() {
+  //   return this.isLocked();
+  // }
+  //
+  // lockDigits() {
+  //   this.digits.forEach((digit) => {
+  //     if (digit.added) {
+  //       digit.locked = true;
+  //     }
+  //   });
+  // }
 
 
   isAdded() {

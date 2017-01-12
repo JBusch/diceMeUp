@@ -27,7 +27,6 @@ export class DigitComponent implements OnInit {
   }
 
   remove(digit): void {
-    console.log(digit);
     this._store.dispatch(this.digitActions.remove(digit));
   }
 

@@ -9,11 +9,12 @@ export class CupActions {
 
   static ROLLDICE = '[Cup] Roll Dices';
 
-  ROLLDICE(): Action {
-    return {
-      type: CupActions.ROLLDICE
-    };
-  }
+  // ROLLDICE(dices): Action {
+  //   return {
+  //     type: CupActions.ROLLDICE,
+  //     payload: dices
+  //   };
+  // }
 
   // static SELECTDICE = '[Dice] Select Dice';
   //

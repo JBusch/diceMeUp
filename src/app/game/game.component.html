@@ -1,3 +1,29 @@
 <app-block></app-block>
 <app-cup></app-cup>
+
+
+<div>
+  <h1>{{ (game$ | async).countRolls | json }}</h1>
+  <h2>You rolled {{ countRolls$ }} times!</h2>
+  <nav>
+    <button type="button" (click)="nextRound()">Next round
+    </button>
+
+    <!--<button *ngIf="digit.isAdded()" (click)="game.nextRound()">-->
+    <!--Next Round-->
+    <!--</button>-->
+
+    <!--<button (click)="dices.selectAll()">-->
+    <!--Select All!-->
+    <!--</button>-->
+
+    <!--<button (click)="dices.unSelectAll()">-->
+    <!--Unselect All!-->
+    <!--</button>-->
+  </nav>
+  <h2>Round {{ (game$ | async).countRound }}!</h2>
+</div>
+
 <app-result-cup></app-result-cup>
+
+

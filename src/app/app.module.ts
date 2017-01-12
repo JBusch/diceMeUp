@@ -9,11 +9,9 @@ import {HomeComponent} from './home/home.component';
 import {RouteDefinitions} from './app.routes';
 import {RouterModule} from "@angular/router";
 import {DigitComponent} from './digits/digit/digit.component';
-import {digitReducer} from "./digits/digit/digit.reducer";
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 // ngrx
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from "@ngrx/store";
 import {DigitActions} from "./digits/digit/digit.actions";
 import {DigitsComponent} from "./digits/digits.component";
@@ -30,6 +28,10 @@ import {DicesActions} from "./dices/dices.actions";
 import {digitsReducer} from "./digits/digits.reducer";
 import {DigitsActions} from "./digits/digits.actions";
 import {CupActions} from "./cup/cup.actions";
+import {gameReducer} from "./game/game.reducer";
+import {GameActions} from "./game/game.actions";
+
+import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
 
 @NgModule({
   declarations: [
@@ -52,10 +54,17 @@ import {CupActions} from "./cup/cup.actions";
     StoreModule.provideStore({
       dices: dicesReducer,
       dice: diceReducer,
-      digits: digitsReducer,
-      digit: digitReducer
+      game: gameReducer,
+      digits: digitsReducer
     }),
-    StoreDevtoolsModule.instrumentOnlyWithExtension()
+    // StoreDevtoolsModule.instrumentOnlyWithExtension()
+    StoreDevtoolsModule.instrumentStore({
+      monitor: useLogMonitor({
+        visible: true,
+        position: 'right'
+      })
+    }),
+    StoreLogMonitorModule
   ],
   providers: [
     DigitActions,
@@ -64,7 +73,8 @@ import {CupActions} from "./cup/cup.actions";
     DiceService,
     DiceActions,
     DicesActions,
-    CupActions
+    CupActions,
+    GameActions
   ],
   bootstrap: [AppComponent]
 })

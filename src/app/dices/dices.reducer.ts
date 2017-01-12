@@ -43,13 +43,16 @@ const comparator = 'id';
 export function dicesReducer(state = DicesState, action: Action) {
   switch (action.type) {
 
-    case CupActions.ROLLDICE: {
+    case DicesActions.ROLLDICE: {
+      console.log('sate', state);
       let dices = state.dices;
-      dices.forEach((dice) => {
-        dice.activeSide = (Math.floor(Math.random() * 6) + 1);
+      let newDices = dices.map((dice) => {
+        console.log('dice', dice);
+        return Object.assign({}, dice, {activeSide: (Math.floor(Math.random() * 6) + 1)})
       });
-
-      return Object.assign(state, dices);
+      console.log('newdice', newDices);
+      let resultDices = Array.from(state.resultDices);
+      return {dices: newDices, resultDices};
     }
 
     case DiceActions.SELECTDICE: {
