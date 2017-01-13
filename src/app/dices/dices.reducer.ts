@@ -12,26 +12,26 @@ export const DicesState = {
   dices: [
     {
       id: 1,
-      activeSide: 1,
+      activeSide: 5,
       selected: false
     },
     {
       id: 2,
-      activeSide: 1,
+      activeSide: 5,
       selected: false
     },
     {
       id: 3,
-      activeSide: 1,
+      activeSide: 5,
       selected: false
     },
     {
       id: 4,
-      activeSide: 2,
+      activeSide: 5,
       selected: false
     }, {
       id: 5,
-      activeSide: 1,
+      activeSide: 5,
       selected: false
     }
   ],

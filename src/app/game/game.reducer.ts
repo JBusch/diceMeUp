@@ -4,10 +4,10 @@ import {Game} from "./game.model";
 import {GameActions} from "./game.actions";
 
 export const GameState: Game = {
-  id: 1,
-  playerId: 11,
-  countRound: 0,
-  countRolls: 5
+  id: 0,
+  playerId: 0,
+  countRound: 1,
+  countRolls: 0
 };
 
 const comparator = 'id';

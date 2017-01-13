@@ -50,7 +50,7 @@ export const DigitsState: Digit[] = [
   {
     id: 6,
     label: '6er',
-    value: 666,
+    value: 0,
     added: false,
     locked: false,
     disabled: false

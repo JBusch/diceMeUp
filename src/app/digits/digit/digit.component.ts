@@ -1,8 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import {DigitsService} from './../digits.service';
 import {Store} from "@ngrx/store";
 import {DigitActions} from "./digit.actions";
-import {Observable} from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import {Digit} from "./digit.model";
@@ -24,7 +22,6 @@ export class DigitComponent implements OnInit {
   constructor(private digitsActions: DigitsActions,
               private digitActions: DigitActions,
               private _store: Store<any>) {
-    // this.dices = this._store.select('dices');
   }
 
 
@@ -38,7 +35,6 @@ export class DigitComponent implements OnInit {
   }
 
   add(digit: Digit): void {
-
     // get current state
     this._store.take(1).subscribe((state) => {
       this.dices = state.dices.resultDices;
@@ -48,12 +44,9 @@ export class DigitComponent implements OnInit {
     let value: number = 0;
     this.dices.forEach((dice) => {
       if (dice.activeSide === digit.id) {
-        console.log('act', dice);
         value += dice.activeSide;
       }
     });
-    console.log('add', this.dices, value);
-
     this._store.dispatch(this.digitActions.add(digit, value));
     this._store.dispatch(this.digitsActions.disable());
   }

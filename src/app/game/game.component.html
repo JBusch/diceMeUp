@@ -3,8 +3,7 @@
 
 
 <div>
-  <h1>{{ (game$ | async).countRolls | json }}</h1>
-  <h2>You rolled {{ countRolls$ }} times!</h2>
+  <h2>You rolled {{ (game$ | async).countRolls }} times!</h2>
   <nav>
     <button type="button" (click)="nextRound()">Next round
     </button>
