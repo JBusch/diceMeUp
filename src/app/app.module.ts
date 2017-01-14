@@ -32,6 +32,8 @@ import {gameReducer} from "./game/game.reducer";
 import {GameActions} from "./game/game.actions";
 
 import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
+import {DigitsCombinationsComponent} from "./digits-combinations/digits-combinations.component";
+import {digitsCombinationsReducer} from "./digits-combinations/digits-combinations.reducer";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
     HomeComponent,
     DigitsComponent,
     DigitComponent,
+    DigitsCombinationsComponent,
     DicesComponent,
     DiceComponent,
     CupComponent,
@@ -55,7 +58,8 @@ import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
       dices: dicesReducer,
       dice: diceReducer,
       game: gameReducer,
-      digits: digitsReducer
+      digits: digitsReducer,
+      digitsCombinations: digitsCombinationsReducer
     }),
     // StoreDevtoolsModule.instrumentOnlyWithExtension()
     StoreDevtoolsModule.instrumentStore({

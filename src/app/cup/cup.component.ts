@@ -7,6 +7,7 @@ import {GameActions} from "../game/game.actions";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/scan';
 import {DicesActions} from "../dices/dices.actions";
+import {Digit} from "../digits/digit/digit.model";
 
 @Component({
   selector: 'app-cup',
@@ -17,6 +18,8 @@ export class CupComponent implements OnInit {
   private title: string = 'Gameboard';
   dices$: Observable<Dice[]>;
   dices: Dice[];
+  rolledDices: Dice[];
+  digits: Digit[];
 
   constructor(private _store: Store<any>,
               private cupActions: CupActions,
@@ -30,14 +33,25 @@ export class CupComponent implements OnInit {
     //   });
     //   return acc;
     // });
+
+
   }
 
   ngOnInit() {
   }
 
+  checkDigitsComaptibility() {
+    this.rolledDices.
+  }
+
   rollDice() {
     this._store.dispatch(this.dicesActions.ROLLDICE());
     this._store.dispatch(this.gameActions.INCREMENTROLLS());
+
+    this._store.take(1).subscribe((state) => {
+      this.rolledDices = state.dices.dices;
+      this.digits = state.digits;
+    });
   }
 
 }

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import {Digit} from "./digit.model";
 import {DigitsActions} from "../digits.actions";
+import {Dice} from "../../dices/dice/dice.model";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class DigitComponent implements OnInit {
   @Input() digit;
   @Input() selectedDices;
 
-  dices;
+  rolledDices: Dice[];
 
   constructor(private digitsActions: DigitsActions,
               private digitActions: DigitActions,
@@ -37,12 +38,12 @@ export class DigitComponent implements OnInit {
   add(digit: Digit): void {
     // get current state
     this._store.take(1).subscribe((state) => {
-      this.dices = state.dices.resultDices;
+      this.rolledDices = state.dices.resultDices;
     });
 
 
     let value: number = 0;
-    this.dices.forEach((dice) => {
+    this.rolledDices.forEach((dice) => {
       if (dice.activeSide === digit.id) {
         value += dice.activeSide;
       }

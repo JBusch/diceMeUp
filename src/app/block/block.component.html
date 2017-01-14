@@ -1,10 +1,14 @@
 <form>
   <app-digits></app-digits>
-  <div class="block-sum-upper">
+  <div class="block-sum-digits">
     Sum upper: {{ digitSum }}
   </div>
   <div class="block-bonus">
     Bonus: {{ bonus }}
   </div>
+  <div class="block-sum-upper">
+    Bonus: {{ digitSum + bonus }}
+  </div>
+  <app-digits-combinations></app-digits-combinations>
 </form>
 

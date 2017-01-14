@@ -1,0 +1,4 @@
+<fieldset class="digits">
+  <app-digit *ngFor="let digit of digitsCombinations$ | async"
+             [digit]="digit" [selectedDices]="selectedDices$"></app-digit>
+</fieldset>
