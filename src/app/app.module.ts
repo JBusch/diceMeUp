@@ -10,8 +10,6 @@ import {RouteDefinitions} from './app.routes';
 import {RouterModule} from "@angular/router";
 import {DigitComponent} from './digits/digit/digit.component';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-
-// ngrx
 import {StoreModule} from "@ngrx/store";
 import {DigitActions} from "./digits/digit/digit.actions";
 import {DigitsComponent} from "./digits/digits.component";
@@ -32,8 +30,13 @@ import {gameReducer} from "./game/game.reducer";
 import {GameActions} from "./game/game.actions";
 
 import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
-import {DigitsCombinationsComponent} from "./digits-combinations/digits-combinations.component";
-import {digitsCombinationsReducer} from "./digits-combinations/digits-combinations.reducer";
+
+
+export function instrumentOptions() {
+  return {
+    monitor: useLogMonitor({visible: true, position: 'right'})
+  };
+}
 
 @NgModule({
   declarations: [
@@ -43,7 +46,6 @@ import {digitsCombinationsReducer} from "./digits-combinations/digits-combinatio
     HomeComponent,
     DigitsComponent,
     DigitComponent,
-    DigitsCombinationsComponent,
     DicesComponent,
     DiceComponent,
     CupComponent,
@@ -58,17 +60,19 @@ import {digitsCombinationsReducer} from "./digits-combinations/digits-combinatio
       dices: dicesReducer,
       dice: diceReducer,
       game: gameReducer,
-      digits: digitsReducer,
-      digitsCombinations: digitsCombinationsReducer
+      digits: digitsReducer
     }),
-    // StoreDevtoolsModule.instrumentOnlyWithExtension()
-    StoreDevtoolsModule.instrumentStore({
-      monitor: useLogMonitor({
-        visible: true,
-        position: 'right'
-      })
-    }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    // StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule
+    // StoreDevtoolsModule.instrumentOnlyWithExtension()
+    // // StoreDevtoolsModule.instrumentStore({
+    // //   monitor: useLogMonitor({
+    // //     visible: false,
+    // //     position: 'right'
+    // //   })
+    // // }),
+    // StoreLogMonitorModule
   ],
   providers: [
     DigitActions,
