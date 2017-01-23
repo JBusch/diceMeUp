@@ -13,7 +13,8 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
   },
   {
     id: 2,
@@ -21,7 +22,8 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
   },
   {
     id: 4,
@@ -37,7 +40,8 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
   },
   {
     id: 5,
@@ -45,7 +49,8 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
   },
   {
     id: 6,
@@ -53,7 +58,62 @@ export const DigitsState: Digit[] = [
     value: 0,
     added: false,
     locked: false,
-    disabled: false
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 7,
+    label: '3 of a  kind',
+    value: 0,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 8,
+    label: '4 of a kind',
+    value: 0,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 9,
+    label: 'Full House',
+    value: 25,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 10,
+    label: 'Small straight',
+    value: 30,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 11,
+    label: 'Large straight',
+    value: 40,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 12,
+    label: 'dicedItup!',
+    value: 50,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
   }
 ];
 
@@ -61,6 +121,25 @@ const comparator = 'id';
 
 export function digitsReducer(state = DigitsState, action: Action) {
   switch (action.type) {
+
+    case DigitsActions.TOGGLEADDABLE: {
+      switch (action.payload) {
+        case 'largeStraightValid': {
+          let digit = Object.assign({}, state[10], {isAddable: true});
+          let stateClone = state.slice(0);
+          stateClone[10] = digit;
+          return stateClone;
+        }
+      }
+      return state;
+    }
+
+    case DigitsActions.RESETADDABLE: {
+      return state.map((digit: Digit) => {
+        return Object.assign({}, digit, {isAddable: false});
+      });
+    }
+
 
     case DigitActions.ADD: {
       let digit: Digit = action.payload.digit;
@@ -95,7 +174,10 @@ export function digitsReducer(state = DigitsState, action: Action) {
     case DigitsActions.ENABLE: {
       console.log(state);
       let digits = state.map((digit) => {
-        return Object.assign({}, digit, {disabled: false});
+        return Object.assign({}, digit, {
+          disabled: false,
+          isAddable: false
+        });
       });
       return digits;
     }

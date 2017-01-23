@@ -5,24 +5,40 @@ import {Store} from "@ngrx/store";
 import {Digit} from "../../digits/digit/digit.model";
 import {Observable} from "rxjs";
 import {DiceActions} from "./dice.actions";
+import {DigitActions} from "../../digits/digit/digit.actions";
+import {DigitsActions} from "../../digits/digits.actions";
 @Component({
   selector: 'app-dice',
   templateUrl: './dice.component.html',
   styleUrls: ['./dice.component.scss']
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DiceComponent {
+export class DiceComponent implements OnInit {
   @Input() dice: Dice;
-  storeDice$: Observable<Dice>;
+  selectedDices$: Observable<Dice[]>;
+  fullHouseValid: boolean;
+  diceMeUpValid: boolean;
+  fourOfAKindValid: boolean;
+  threeOfAKindValid: boolean;
+  smallStraightValid: boolean;
+  largeStraightValid: boolean;
+
 
   constructor(private dices: DiceService,
               private _store: Store<Dice>,
-              private diceActions: DiceActions) {
-    this.storeDice$ = this._store.select('dice');
-    // this.storeDice$.subscribe(st => console.log('st', st));
+              private diceActions: DiceActions,
+              private digitsActions: DigitsActions) {
+
   }
 
+
   @ViewChild('domDice') domDice;
+
+
+  ngOnInit() {
+    console.log('init');
+
+  }
 
   ngAfterViewInit() {
     // console.log(this.domDice);

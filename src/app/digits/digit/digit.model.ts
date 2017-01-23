@@ -4,5 +4,6 @@ export interface Digit {
   value: number,
   added: boolean,
   locked: boolean,
-  disabled: boolean
+  disabled: boolean,
+  isAddable: boolean
 }

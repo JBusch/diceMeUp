@@ -1,4 +1,4 @@
-<div class="digit">
+<div class="digit" [class.is-not-addable]="!digit.isAddable">
   <div class="digit-item">
     <label class="digit-item-lanel"> {{ digit.label }}</label>
     <input

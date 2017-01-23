@@ -1,9 +1,30 @@
 .digit {
   display: flex;
-  margin: 0 0 10px;
   color: #000;
-  padding: 10px;
-  &-label {
-    margin-right: 20px;
+  //padding: 10px;
+  flex: 1 0 0;
+  &-item {
+    //margin: 0 10px 10px;
+    display: flex;
+    flex: 1 0 0;
+  }
+  label {
+    margin-right: 10px;
+    width: 75%;
+  }
+  input {
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+  }
+
+  &.is-addable {
+    background-color: green;
+  }
+
+  &.is-not-addable {
+    background-color: red;
   }
 }

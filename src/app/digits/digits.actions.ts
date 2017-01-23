@@ -7,6 +7,23 @@ import {Digit} from "./digit/digit.model";
 
 export class DigitsActions {
 
+  static TOGGLEADDABLE = '[Digits] TOGGLEADDABLE';
+
+  toggleAddable(condition: string): Action {
+    return {
+      type: DigitsActions.TOGGLEADDABLE,
+      payload: condition
+    };
+  }
+
+  static RESETADDABLE = '[Digits] RESETADDABLE';
+
+  resetAddable(): Action {
+    return {
+      type: DigitsActions.RESETADDABLE,
+    };
+  }
+
   static DISABLE = '[Digits] Disable';
 
   disable(): Action {

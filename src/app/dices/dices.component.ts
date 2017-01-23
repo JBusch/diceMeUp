@@ -7,6 +7,7 @@ import {Observable} from "rxjs";
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/pluck';
 import {DicesActions} from "./dices.actions";
+import {DigitsActions} from "../digits/digits.actions";
 
 @Component({
   selector: 'app-dices',
@@ -18,11 +19,21 @@ export class DicesComponent implements OnInit {
   @Input() dices: Dice[];
   selectedDices: Dice[];
   // maxRolls: number = this.game.getRollCount();
+  selectedDices$: Observable<Dice[]>;
+  fullHouseValid: boolean;
+  diceMeUpValid: boolean;
+  fourOfAKindValid: boolean;
+  threeOfAKindValid: boolean;
+  smallStraightValid: boolean;
+  largeStraightValid: boolean;
+
 
   constructor(/*private dices: DiceService,*/
               /*private game: GameService,*/
               private _store: Store<any>,
-              private dicesActions: DicesActions) {
+              private dicesActions: DicesActions,
+              private digitsActions: DigitsActions) {
+    this.selectedDices$ = this._store.select('dices').pluck('resultDices');
   }
 
   ngOnChanges() {
@@ -33,6 +44,7 @@ export class DicesComponent implements OnInit {
   // }
   //
   ngOnInit() {
+
     // console.log(this.dices$.subscribe(dice => console.log(dice)));
     // this.dices$.map(state => state.dices).subscribe(dice => console.log(dice));
     // this.dices$ = this.dices.getDiceCupDices();

@@ -18,7 +18,7 @@ export class DigitComponent implements OnInit {
   @Input() digit;
   @Input() selectedDices;
 
-  rolledDices: Dice[];
+  chosenDices: Dice[];
 
   constructor(private digitsActions: DigitsActions,
               private digitActions: DigitActions,
@@ -35,19 +35,35 @@ export class DigitComponent implements OnInit {
     this._store.dispatch(this.digitsActions.enable());
   }
 
+//   switch (digit.id) {
+//   case 1:
+//   // Anweisungen werden ausgeführt,
+//   // falls expression mit value1 übereinstimmt
+//   [break;]
+//   default:
+//     // Anweisungen werden ausgeführt,
+//     // falls keine der case-Klauseln mit expression übereinstimmt
+//     [break;]
+// }
+
   add(digit: Digit): void {
     // get current state
     this._store.take(1).subscribe((state) => {
-      this.rolledDices = state.dices.resultDices;
+      this.chosenDices = state.dices.resultDices;
+
     });
 
 
     let value: number = 0;
-    this.rolledDices.forEach((dice) => {
+    this.chosenDices.forEach((dice) => {
+
+
       if (dice.activeSide === digit.id) {
         value += dice.activeSide;
       }
     });
+
+
     this._store.dispatch(this.digitActions.add(digit, value));
     this._store.dispatch(this.digitsActions.disable());
   }

@@ -1,4 +1,4 @@
 <fieldset class="digits">
-  <app-digit *ngFor="let digit of digits$ | async"
+  <app-digit *ngFor="let digit of digits$ | async | slice:1:3"
              [digit]="digit" [selectedDices]="selectedDices$"></app-digit>
 </fieldset>

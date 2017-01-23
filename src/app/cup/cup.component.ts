@@ -41,7 +41,7 @@ export class CupComponent implements OnInit {
   }
 
   checkDigitsComaptibility() {
-    this.rolledDices.
+    // this.rolledDices.
   }
 
   rollDice() {

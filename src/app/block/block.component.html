@@ -1,14 +1,25 @@
 <form>
-  <app-digits></app-digits>
-  <div class="block-sum-digits">
-    Sum upper: {{ digitSum }}
+  <!--<app-digits></app-digits>-->
+  <div class="upper">
+    <app-digit *ngFor="let digit of digits$ | async | slice:0:6"
+               [digit]="digit" [selectedDices]="selectedDices$"></app-digit>
+    <div class="block-sum-digits">
+      Sum upper: {{ digitSumUpper }}
+    </div>
+    <div class="block-bonus">
+      Bonus: {{ bonus }}
+    </div>
+
   </div>
-  <div class="block-bonus">
-    Bonus: {{ bonus }}
+  <div class="lower">
+    <app-digit *ngFor="let digit of digits$ | async | slice:7:14"
+               [digit]="digit" [selectedDices]="selectedDices$"></app-digit>
   </div>
-  <div class="block-sum-upper">
-    Bonus: {{ digitSum + bonus }}
+  <div class="block-sum-lower">
+    Sum lower: {{ digitSumLower + bonus }}
   </div>
-  <app-digits-combinations></app-digits-combinations>
+  <div class="block-sum-lower">
+    Total: {{ digitSumLower + digitSumUpper }}
+  </div>
 </form>
 

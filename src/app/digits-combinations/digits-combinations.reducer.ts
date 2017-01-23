@@ -6,54 +6,7 @@ import 'rxjs/add/operator/map';
 import {Digit} from "../digits/digit/digit.model";
 
 export const DigitsCombinationsState: DigitsCombinations[] = [
-  {
-    id: 7,
-    label: '3 of a  kind',
-    value: 0,
-    added: false,
-    locked: false,
-    disabled: false
-  },
-  {
-    id: 8,
-    label: '4 of a kind',
-    value: 0,
-    added: false,
-    locked: false,
-    disabled: false
-  },
-  {
-    id: 9,
-    label: 'Full House',
-    value: 25,
-    added: false,
-    locked: false,
-    disabled: false
-  },
-  {
-    id: 10,
-    label: 'Small straight',
-    value: 30,
-    added: false,
-    locked: false,
-    disabled: false
-  },
-  {
-    id: 11,
-    label: 'Large straight',
-    value: 40,
-    added: false,
-    locked: false,
-    disabled: false
-  },
-  {
-    id: 6,
-    label: 'dicedItup!',
-    value: 50,
-    added: false,
-    locked: false,
-    disabled: false
-  }
+
 ];
 
 const comparator = 'id';
