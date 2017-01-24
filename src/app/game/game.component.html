@@ -1,4 +1,10 @@
 <app-block></app-block>
+
+<nav>
+  <button *ngIf="(selectedDices$ | async).length !== 5 &&  (game$ | async).countRolls !== 3 " type="button"
+          (click)="rollDice()">Roll Dice!
+  </button>
+</nav>
 <app-cup></app-cup>
 
 

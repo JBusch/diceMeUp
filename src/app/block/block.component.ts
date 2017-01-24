@@ -19,7 +19,11 @@ export class BlockComponent implements OnInit {
   digitSumLower: number;
   bonus: number;
 
-  constructor(private _store: Store<Dice>) {
+
+  // digits service must be initialised at least one time, so that the subscription triggers.
+  // ... which sucks....
+  constructor(private _store: Store<Dice>,
+              private digitsService: DigitsService) {
     this.selectedDices$ = _store.select('dices').pluck('resultDices');
     this.digits$ = _store.select('digits');
 
