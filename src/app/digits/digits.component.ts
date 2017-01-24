@@ -11,6 +11,7 @@ import {Dice} from "../dices/dice/dice.model";
   styleUrls: ['./digits.component.scss']
 })
 export class DigitsComponent implements OnInit {
+
   digits$: Observable<Digit[]>;
   isDigitAdded: boolean;
   selectedDices$: Observable<Dice[]>;

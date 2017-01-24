@@ -17,6 +17,7 @@ export class DigitComponent implements OnInit {
 
   @Input() digit;
   @Input() selectedDices;
+  @Input() digitsValidState;
 
   chosenDices: Dice[];
 
@@ -35,29 +36,14 @@ export class DigitComponent implements OnInit {
     this._store.dispatch(this.digitsActions.enable());
   }
 
-//   switch (digit.id) {
-//   case 1:
-//   // Anweisungen werden ausgeführt,
-//   // falls expression mit value1 übereinstimmt
-//   [break;]
-//   default:
-//     // Anweisungen werden ausgeführt,
-//     // falls keine der case-Klauseln mit expression übereinstimmt
-//     [break;]
-// }
-
   add(digit: Digit): void {
     // get current state
     this._store.take(1).subscribe((state) => {
       this.chosenDices = state.dices.resultDices;
-
     });
-
 
     let value: number = 0;
     this.chosenDices.forEach((dice) => {
-
-
       if (dice.activeSide === digit.id) {
         value += dice.activeSide;
       }

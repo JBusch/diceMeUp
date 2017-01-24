@@ -82,7 +82,7 @@ export const DigitsState: Digit[] = [
   {
     id: 9,
     label: 'Full House',
-    value: 25,
+    value: 0,
     added: false,
     locked: false,
     disabled: false,
@@ -91,7 +91,7 @@ export const DigitsState: Digit[] = [
   {
     id: 10,
     label: 'Small straight',
-    value: 30,
+    value: 0,
     added: false,
     locked: false,
     disabled: false,
@@ -100,7 +100,7 @@ export const DigitsState: Digit[] = [
   {
     id: 11,
     label: 'Large straight',
-    value: 40,
+    value: 0,
     added: false,
     locked: false,
     disabled: false,
@@ -109,7 +109,16 @@ export const DigitsState: Digit[] = [
   {
     id: 12,
     label: 'dicedItup!',
-    value: 50,
+    value: 0,
+    added: false,
+    locked: false,
+    disabled: false,
+    isAddable: false
+  },
+  {
+    id: 13,
+    label: 'Chance',
+    value: 0,
     added: false,
     locked: false,
     disabled: false,
@@ -124,12 +133,90 @@ export function digitsReducer(state = DigitsState, action: Action) {
 
     case DigitsActions.TOGGLEADDABLE: {
       switch (action.payload) {
-        case 'largeStraightValid': {
-          let digit = Object.assign({}, state[10], {isAddable: true});
+        case 'noStraight': {
+          let largeStraightDigit = Object.assign({}, state[10], {isAddable: false});
+          let smallStraightDigit = Object.assign({}, state[9], {isAddable: false});
           let stateClone = state.slice(0);
-          stateClone[10] = digit;
+          stateClone[10] = largeStraightDigit;
+          stateClone[9] = smallStraightDigit;
           return stateClone;
         }
+
+        case 'largeStraightValid': {
+          let largeStraightDigit = Object.assign({}, state[10], {isAddable: true});
+          let smallStraightDigit = Object.assign({}, state[9], {isAddable: true});
+          let stateClone = state.slice(0);
+          stateClone[10] = largeStraightDigit;
+          stateClone[9] = smallStraightDigit;
+          return stateClone;
+        }
+
+        case 'largeStraightInvalid': {
+          let largeStraightDigit = Object.assign({}, state[10], {isAddable: false});
+          let stateClone = state.slice(0);
+          stateClone[10] = largeStraightDigit;
+          return stateClone;
+        }
+
+        case 'smallStraightValid': {
+          let smallStraightDigit = Object.assign({}, state[9], {isAddable: true});
+          let stateClone = state.slice(0);
+          stateClone[9] = smallStraightDigit;
+          return stateClone;
+        }
+
+        case 'smallStraightInvalid': {
+          let smallStraightDigit = Object.assign({}, state[9], {isAddable: false});
+          let stateClone = state.slice(0);
+          stateClone[9] = smallStraightDigit;
+          return stateClone;
+        }
+
+        case 'diceMeUpValid': {
+          let threeOfAKindDigit = Object.assign({}, state[6], {isAddable: true});
+          let fourOfAKindDigit = Object.assign({}, state[7], {isAddable: true});
+          let fullHouseDigit = Object.assign({}, state[8], {isAddable: true});
+          let diceMeUpDigit = Object.assign({}, state[11], {isAddable: true});
+          let stateClone = state.slice(0);
+
+          stateClone[6] = threeOfAKindDigit;
+          stateClone[7] = fourOfAKindDigit;
+          stateClone[8] = fullHouseDigit;
+          stateClone[11] = diceMeUpDigit;
+
+          return stateClone;
+        }
+
+        case 'fullHouseValid': {
+          let threeOfAKindDigit = Object.assign({}, state[6], {isAddable: true});
+          let fullHouseDigit = Object.assign({}, state[8], {isAddable: true});
+          let stateClone = state.slice(0);
+
+          stateClone[6] = threeOfAKindDigit;
+          stateClone[8] = fullHouseDigit;
+
+          return stateClone;
+        }
+
+        case 'fourOfAKindValid': {
+          let threeOfAKindDigit = Object.assign({}, state[6], {isAddable: true});
+          let fourOfAKindDigit = Object.assign({}, state[7], {isAddable: true});
+          let stateClone = state.slice(0);
+
+          stateClone[6] = threeOfAKindDigit;
+          stateClone[7] = fourOfAKindDigit;
+
+          return stateClone;
+        }
+
+        case 'threeOfAKindValid': {
+          let threeOfAKindDigit = Object.assign({}, state[6], {isAddable: true});
+          let stateClone = state.slice(0);
+
+          stateClone[6] = threeOfAKindDigit;
+          return stateClone;
+        }
+
       }
       return state;
     }
@@ -146,7 +233,22 @@ export function digitsReducer(state = DigitsState, action: Action) {
       let value: number = action.payload.value;
       return state.map((olddigit) => {
         if (olddigit.id === digit.id) {
-          return Object.assign({}, digit, {value: value, added: true});
+          if (digit.id <= 9 || digit.id === 13) {
+            return Object.assign({}, digit, {value: value, added: true});
+          } else {
+            switch (digit.id) {
+              case 10: {
+                return Object.assign({}, digit, {value: 30, added: true});
+              }
+              case 11: {
+                return Object.assign({}, digit, {value: 40, added: true});
+              }
+              case 12: {
+                return Object.assign({}, digit, {value: 50, added: true});
+              }
+            }
+          }
+
         } else {
           return olddigit;
         }
