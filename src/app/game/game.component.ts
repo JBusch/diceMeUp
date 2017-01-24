@@ -30,7 +30,7 @@ export class GameComponent implements OnInit {
   }
 
   rollDice() {
-    this._store.dispatch(this.dicesActions.ROLLDICE());
+    this._store.dispatch(this.dicesActions.rollDice());
     this._store.dispatch(this.gameActions.INCREMENTROLLS());
 
     // this._store.take(1).subscribe((state) => {
@@ -44,6 +44,7 @@ export class GameComponent implements OnInit {
     this._store.dispatch(this.gameActions.INCREMENTROUND());
     this._store.dispatch(this.digitsActions.lock());
     this._store.dispatch(this.digitsActions.enable());
+    this._store.dispatch(this.dicesActions.resetDice());
   }
 
 }

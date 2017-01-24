@@ -75,6 +75,10 @@ export function dicesReducer(state = DicesState, action: Action) {
       return {dices, resultDices};
     }
 
+    case DicesActions.RESETDICE: {
+      return DicesState;
+    }
+
     default: {
       return state;
     }

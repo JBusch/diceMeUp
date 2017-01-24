@@ -10,10 +10,18 @@ import {Dice} from './dice/dice.model';
 export class DicesActions {
   static ROLLDICE = '[Dices] Dices rolled';
 
-  ROLLDICE(): Action {
+  rollDice(): Action {
     return {
       type: DicesActions.ROLLDICE
     };
+  }
+
+  static RESETDICE = '[Dices] Dices rested';
+
+  resetDice(): Action {
+    return {
+      type: DicesActions.RESETDICE
+    }
   }
 
   // static SELECTDICE = '[Dice] Select Dice';
