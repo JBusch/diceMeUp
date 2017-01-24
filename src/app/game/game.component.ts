@@ -6,6 +6,7 @@ import {GameActions} from "./game.actions";
 import 'rxjs/add/operator/map';
 import "rxjs/add/operator/distinctUntilChanged";
 import {Dice} from "../dices/dice/dice.model";
+import {DigitsActions} from "../digits/digits.actions";
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,8 @@ export class GameComponent implements OnInit {
   game$;
 
   constructor(private _store: Store<any>,
-              private gameActions: GameActions) {
+              private gameActions: GameActions,
+              private digitsActions: DigitsActions) {
     this.game$ = this._store.select('game');
 
   }
@@ -25,7 +27,8 @@ export class GameComponent implements OnInit {
   }
 
   nextRound(): void {
-    this._store.dispatch(this.gameActions.INCREMENTROUND())
+    this._store.dispatch(this.gameActions.INCREMENTROUND());
+    this._store.dispatch(this.digitsActions.lock());
   }
 
 }

@@ -37,6 +37,7 @@ export class DigitComponent implements OnInit {
   }
 
   add(digit: Digit): void {
+    console.log('add');
     // get current state
     this._store.take(1).subscribe((state) => {
       this.chosenDices = state.dices.resultDices;
@@ -44,12 +45,14 @@ export class DigitComponent implements OnInit {
 
     let value: number = 0;
     this.chosenDices.forEach((dice) => {
-      if (dice.activeSide === digit.id) {
+      console.log(dice);
+      if (digit.id <= 6 && dice.activeSide === digit.id) {
+        value += dice.activeSide;
+      } else if (digit.id > 6) {
+        console.log(value);
         value += dice.activeSide;
       }
     });
-
-
     this._store.dispatch(this.digitActions.add(digit, value));
     this._store.dispatch(this.digitsActions.disable());
   }

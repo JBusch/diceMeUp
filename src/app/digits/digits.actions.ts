@@ -39,4 +39,12 @@ export class DigitsActions {
       type: DigitsActions.ENABLE
     };
   }
+
+  static LOCKDIGIT = '[Digits] Lock';
+
+  lock(): Action {
+    return {
+      type: DigitsActions.LOCKDIGIT
+    };
+  }
 }

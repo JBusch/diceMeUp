@@ -233,22 +233,54 @@ export function digitsReducer(state = DigitsState, action: Action) {
       let value: number = action.payload.value;
       return state.map((olddigit) => {
         if (olddigit.id === digit.id) {
-          if (digit.id <= 9 || digit.id === 13) {
+          if (digit.id <= 6 || digit.id === 13) {
             return Object.assign({}, digit, {value: value, added: true});
           } else {
             switch (digit.id) {
+              case 7: {
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: value, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
+              }
+              case 8: {
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: value, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
+              }
+              case 9: {
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: 25, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
+              }
               case 10: {
-                return Object.assign({}, digit, {value: 30, added: true});
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: 30, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
               }
               case 11: {
-                return Object.assign({}, digit, {value: 40, added: true});
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: 40, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
               }
               case 12: {
-                return Object.assign({}, digit, {value: 50, added: true});
+                if (digit.isAddable) {
+                  return Object.assign({}, digit, {value: 50, added: true});
+                } else {
+                  return Object.assign({}, digit, {value: 0, added: true});
+                }
               }
             }
           }
-
         } else {
           return olddigit;
         }
@@ -274,7 +306,6 @@ export function digitsReducer(state = DigitsState, action: Action) {
     }
 
     case DigitsActions.ENABLE: {
-      console.log(state);
       let digits = state.map((digit) => {
         return Object.assign({}, digit, {
           disabled: false,
@@ -282,6 +313,15 @@ export function digitsReducer(state = DigitsState, action: Action) {
         });
       });
       return digits;
+    }
+
+    case DigitsActions.LOCKDIGIT: {
+      return state.map((digit: Digit) => {
+        if (digit.added) {
+          return Object.assign({}, digit, {locked: true});
+        }
+        return digit;
+      });
     }
 
 
