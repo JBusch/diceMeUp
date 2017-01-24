@@ -12,8 +12,7 @@ export interface DiceState {
 export const initialState: DiceState = {
   dice: {
     id: 0,
-    activeSide: 1,
-    selected: false
+    activeSide: 1
   }
 };
 

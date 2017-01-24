@@ -43,9 +43,18 @@
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.4.0",
     "protractor": "5.0.0",
+    "sw-precache": "^4.3.0",
     "ts-node": "2.0.0",
     "tslint": "^4.0.2",
     "typescript": "~2.1.5",
     "webdriver-manager": "11.1.1"
+  },
+  "scripts": {
+    "start": "ng serve",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor",
+    "sw": "sw-precache --root=dist --config=sw-precache-config.js"
   }
 }

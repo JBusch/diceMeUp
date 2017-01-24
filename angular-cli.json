@@ -55,5 +55,10 @@
       "pipe": true,
       "service": true
     }
-  }
+  },
+  "assets": [
+    "assets",
+    "favicon.ico",
+    "service-worker.js"
+  ]
 }
