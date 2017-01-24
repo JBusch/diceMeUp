@@ -7,8 +7,8 @@
 </nav>
 <app-cup></app-cup>
 
+<div *ngIf="(game$ | async).countRound < 14">
 
-<div>
   <h2>You rolled {{ (game$ | async).countRolls }} times!</h2>
   <nav>
     <button type="button" *ngIf="(selectedDices$ | async).length !== 5" (click)="selectAll()">Select all!</button>
@@ -29,8 +29,9 @@
     <!--</button>-->
   </nav>
   <h2>Round {{ (game$ | async).countRound }}!</h2>
-</div>
 
+</div>
 <app-result-cup></app-result-cup>
+
 
 

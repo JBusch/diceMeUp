@@ -12,27 +12,22 @@ export const DicesState = {
   dices: [
     {
       id: 1,
-      activeSide: 5,
-      selected: false
+      activeSide: 5
     },
     {
       id: 2,
-      activeSide: 5,
-      selected: false
+      activeSide: 5
     },
     {
       id: 3,
-      activeSide: 5,
-      selected: false
+      activeSide: 5
     },
     {
       id: 4,
-      activeSide: 5,
-      selected: false
+      activeSide: 5
     }, {
       id: 5,
-      activeSide: 5,
-      selected: false
+      activeSide: 5
     }
   ],
   resultDices: []
@@ -59,9 +54,7 @@ export function dicesReducer(state = DicesState, action: Action) {
       let dice = action.payload;
       let dices = state.dices.filter(item => item.id !== dice.id);
       let resultDices = Array.from(state.resultDices);
-      dice.selected = true;
       resultDices.push(dice);
-
       return {dices, resultDices};
     }
 
