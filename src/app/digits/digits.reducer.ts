@@ -318,7 +318,7 @@ export function digitsReducer(state = DigitsState, action: Action) {
     case DigitsActions.LOCKDIGIT: {
       return state.map((digit: Digit) => {
         if (digit.added) {
-          return Object.assign({}, digit, {locked: true});
+          return Object.assign({}, digit, {added: false, locked: true});
         }
         return digit;
       });

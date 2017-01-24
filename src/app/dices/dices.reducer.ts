@@ -65,6 +65,17 @@ export function dicesReducer(state = DicesState, action: Action) {
       return {dices, resultDices};
     }
 
+    case DiceActions.SELECTALLDICE: {
+      let resultDices = Array.from(state.resultDices);
+      let dices = Array.from(state.dices);
+      dices.forEach((dice: Dice) => {
+        resultDices.push(dice);
+      });
+
+      return {dices: [], resultDices};
+    }
+
+
     case DiceActions.UNSELECTDICE: {
       let dice = action.payload;
       let resultDices = state.resultDices.filter(item => item.id !== dice.id);

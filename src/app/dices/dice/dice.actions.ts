@@ -11,60 +11,28 @@ export class DiceActions {
 
   static SELECTDICE = '[Dice] Select Dice';
 
-  SELECTDICE(dice: Dice): Action {
+  selectDice(dice: Dice): Action {
     return {
       type: DiceActions.SELECTDICE,
       payload: Object.assign({}, dice)
     };
   }
 
-  
+  static SELECTALLDICE = '[Dice] Select all dices';
+
+  selectAllDice(): Action {
+    return {
+      type: DiceActions.SELECTALLDICE
+    };
+  }
+
 
   static UNSELECTDICE = '[Dice] Unselect Dice';
 
-  UNSELECTDICE(dice: Dice): Action {
+  unselectDice(dice: Dice): Action {
     return {
       type: DiceActions.UNSELECTDICE,
       payload: Object.assign({}, dice)
     };
   }
-
-  /*
-   remove(dice): void {
-   dice.value = 0;
-   this.added = false;
-   dice.added = false;
-   }
-
-   setLocked(dice) {
-   dice.locked = true;
-   }*/
-
-
-  static INCREMENT = '[Dice] Increment Dice';
-
-  /*increment(dice: Dice): Action {
-   return {
-   type: DiceActions.INCREMENT,
-   payload: Object.assign({}, dice, dice.value++)
-   };
-   }
-
-   static DECREMENT = '[Dice] Decrement Dice';
-
-   decrement(dice: Dice): Action {
-   return {
-   type: DiceActions.DECREMENT,
-   payload: Object.assign({}, dice, dice.value--)
-   };
-   }
-
-   static RESET = '[Dice] Reset Dice';
-
-   reset(dice: Dice): Action {
-   return {
-   type: DiceActions.RESET,
-   payload: Object.assign({}, dice, dice.value = 0)
-   };
-   }*/
 }
