@@ -5,8 +5,7 @@
 <div>
   <h2>You rolled {{ (game$ | async).countRolls }} times!</h2>
   <nav>
-    <button type="button" (click)="nextRound()">Next round
-    </button>
+    <button *ngIf="(selectedDices$ | async).length === 5" type="button" (click)="nextRound()">Next round</button>
 
     <!--<button *ngIf="digit.isAdded()" (click)="game.nextRound()">-->
     <!--Next Round-->

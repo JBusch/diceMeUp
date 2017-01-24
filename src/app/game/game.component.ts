@@ -15,12 +15,13 @@ import {DigitsActions} from "../digits/digits.actions";
 })
 export class GameComponent implements OnInit {
   game$;
+  selectedDices$: Observable<Dice[]>;
 
   constructor(private _store: Store<any>,
               private gameActions: GameActions,
               private digitsActions: DigitsActions) {
     this.game$ = this._store.select('game');
-
+    this.selectedDices$ = _store.select('dices').pluck('resultDices');
   }
 
   ngOnInit() {
@@ -29,6 +30,7 @@ export class GameComponent implements OnInit {
   nextRound(): void {
     this._store.dispatch(this.gameActions.INCREMENTROUND());
     this._store.dispatch(this.digitsActions.lock());
+    this._store.dispatch(this.digitsActions.enable());
   }
 
 }

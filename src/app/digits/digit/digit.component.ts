@@ -17,7 +17,6 @@ export class DigitComponent implements OnInit {
 
   @Input() digit;
   @Input() selectedDices;
-  @Input() digitsValidState;
 
   chosenDices: Dice[];
 

@@ -18,11 +18,8 @@ export class BlockComponent implements OnInit {
   digitSumUpper: number;
   digitSumLower: number;
   bonus: number;
-  digitsValidState: DigitsValidState;
 
-  constructor(private _store: Store<Dice>,
-              private digitsActions: DigitsActions,
-              private digitsService: DigitsService) {
+  constructor(private _store: Store<Dice>) {
     this.selectedDices$ = _store.select('dices').pluck('resultDices');
     this.digits$ = _store.select('digits');
 
