@@ -11,7 +11,7 @@
     >
   </div>
   <div *ngIf="(selectedDices | async).length === 5" class="digit-control">
-    <button (click)="add(digit)" *ngIf="!digit.added" [disabled]="digit.disabled">
+    <button (click)="add(digit)" *ngIf="!digit.added && !digit.locked" [disabled]="digit.disabled">
       add
     </button>
     <button *ngIf="digit.added && !digit.locked" (click)="remove(digit)">
