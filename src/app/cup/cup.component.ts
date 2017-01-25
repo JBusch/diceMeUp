@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Dice} from "../dices/dice/dice.model";
@@ -12,7 +12,8 @@ import {Digit} from "../digits/digit/digit.model";
 @Component({
   selector: 'app-cup',
   templateUrl: './cup.component.html',
-  styleUrls: ['./cup.component.scss']
+  styleUrls: ['./cup.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CupComponent implements OnInit {
   dices$: Observable<Dice[]>;

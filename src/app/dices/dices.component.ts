@@ -1,4 +1,7 @@
-import {Component, OnInit, Input, ViewChild, SimpleChanges, ElementRef, AfterViewInit} from '@angular/core';
+import {
+  Component, OnInit, Input, ViewChild, SimpleChanges, ElementRef, AfterViewInit,
+  ChangeDetectionStrategy
+} from '@angular/core';
 import {Dice} from './dice/dice.model';
 import {DiceService} from './dices.service';
 import {Store} from '@ngrx/store';
@@ -12,28 +15,13 @@ import {DigitsActions} from "../digits/digits.actions";
 @Component({
   selector: 'app-dices',
   templateUrl: './dices.component.html',
-  styleUrls: ['./dices.component.scss']
+  styleUrls: ['./dices.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DicesComponent implements OnInit {
-  element: ElementRef;
   @Input() dices: Dice[];
-  selectedDices: Dice[];
-  // maxRolls: number = this.game.getRollCount();
-  selectedDices$: Observable<Dice[]>;
-  fullHouseValid: boolean;
-  diceMeUpValid: boolean;
-  fourOfAKindValid: boolean;
-  threeOfAKindValid: boolean;
-  smallStraightValid: boolean;
-  largeStraightValid: boolean;
 
-
-  constructor(/*private dices: DiceService,*/
-              /*private game: GameService,*/
-              private _store: Store<any>,
-              private dicesActions: DicesActions,
-              private digitsActions: DigitsActions) {
-    this.selectedDices$ = this._store.select('dices').pluck('resultDices');
+  constructor(private _store: Store<any>) {
   }
 
   ngOnChanges() {

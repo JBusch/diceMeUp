@@ -1,10 +1,21 @@
 :host {
   display: flex;
   flex: 1 1 0;
-  justify-content: space-around;
+  //justify-content: space-between;
 }
 
-app-result-cup {
-  width: 300px;
-  background-color: #fff;
+.game-container {
+  perspective: 2500px;
+  perspective-origin: top;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+
+app-block {
+  margin-right: 40px;
+}
+
+nav {
+  height: 50px;
 }

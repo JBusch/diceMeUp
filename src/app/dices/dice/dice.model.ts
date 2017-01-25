@@ -1,4 +1,5 @@
 export interface Dice {
-  id: number,
-  activeSide: number
+  id: number;
+  activeSide: number;
+  selected: boolean;
 }

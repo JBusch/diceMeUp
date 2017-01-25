@@ -8,26 +8,31 @@ import {DiceActions} from "./dice/dice.actions";
 import 'rxjs/add/operator/map';
 import {CupActions} from "../cup/cup.actions";
 
-export const DicesState = {
+export const DicesState: { dices: Dice[], resultDices: Dice[] } = {
   dices: [
     {
       id: 1,
-      activeSide: 5
+      activeSide: 5,
+      selected: false
     },
     {
       id: 2,
-      activeSide: 5
+      activeSide: 5,
+      selected: false
     },
     {
       id: 3,
-      activeSide: 5
+      activeSide: 5,
+      selected: false
     },
     {
       id: 4,
-      activeSide: 5
+      activeSide: 5,
+      selected: false
     }, {
       id: 5,
-      activeSide: 5
+      activeSide: 5,
+      selected: false
     }
   ],
   resultDices: []
@@ -51,9 +56,10 @@ export function dicesReducer(state = DicesState, action: Action) {
     }
 
     case DiceActions.SELECTDICE: {
-      let dice = action.payload;
-      let dices = state.dices.filter(item => item.id !== dice.id);
-      let resultDices = Array.from(state.resultDices);
+      let dice: Dice = Object.assign({}, action.payload);
+      let dices: Dice[] = state.dices.filter(item => item.id !== dice.id);
+      let resultDices: Dice [] = Array.from(state.resultDices);
+      dice.selected = true;
       resultDices.push(dice);
       return {dices, resultDices};
     }

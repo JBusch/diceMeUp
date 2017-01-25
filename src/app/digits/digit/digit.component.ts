@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {DigitActions} from "./digit.actions";
 import 'rxjs/add/operator/map';
@@ -11,7 +11,8 @@ import {Dice} from "../../dices/dice/dice.model";
 @Component({
   selector: 'app-digit',
   templateUrl: './digit.component.html',
-  styleUrls: ['./digit.component.scss']
+  styleUrls: ['./digit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DigitComponent implements OnInit {
 

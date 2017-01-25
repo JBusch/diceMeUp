@@ -1,21 +1,79 @@
-<div *ngIf="!dice.selected" (click)="selectDice(dice)"
+<!--{{hero.state}}-->
+<!--[@heroState]="hero.state"-->
+<div *ngIf="!dice.selected"
+     (click)="selectDice(dice)"
      #domDice
      class="dice-container dice-{{ dice.id }} dice-show-{{dice.activeSide}} {{dice.selected ? 'selected' : ''}}">
-  <figure class="dice-side-1">1</figure>
-  <figure class="dice-side-2">2</figure>
-  <figure class="dice-side-3">3</figure>
-  <figure class="dice-side-4">4</figure>
-  <figure class="dice-side-5">5</figure>
-  <figure class="dice-side-6">6</figure>
+  <figure class="dice-side-1">
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-2">
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-3">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-4">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-5">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-6">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
 </div>
+<button (click)="hero.toggleState()">state</button>
 
-<div *ngIf="dice.selected" (click)="unSelectDice(dice)"
-     #domDice
+<div *ngIf="dice.selected"
+     (click)="unSelectDice(dice)"
      class="dice-container dice-{{ dice.id }} dice-show-{{dice.activeSide}} {{dice.selected ? 'selected' : ''}}">
-  <figure class="dice-side-1">1</figure>
-  <figure class="dice-side-2">2</figure>
-  <figure class="dice-side-3">3</figure>
-  <figure class="dice-side-4">4</figure>
-  <figure class="dice-side-5">5</figure>
-  <figure class="dice-side-6">6</figure>
+  <figure class="dice-side-1">
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-2">
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-3">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-4">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-5">
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
+  <figure class="dice-side-6"><i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+    <i class="circle"></i>
+  </figure>
 </div>

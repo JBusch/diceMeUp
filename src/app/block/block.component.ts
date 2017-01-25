@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {Dice} from "../dices/dice/dice.model";
@@ -9,7 +9,8 @@ import {DigitsService, DigitsValidState} from "../digits/digits.service";
 @Component({
   selector: 'app-block',
   templateUrl: './block.component.html',
-  styleUrls: ['./block.component.scss']
+  styleUrls: ['./block.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlockComponent implements OnInit {
 

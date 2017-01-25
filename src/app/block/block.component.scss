@@ -1,4 +1,7 @@
 :host {
+  width: 15%;
+  padding: 20px;
+  border: 4px solid lighten(purple, 10%);
   .upper,
   .lower {
     display: flex;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Game} from "./game.model";
 import {Observable} from "rxjs";
@@ -15,7 +15,8 @@ import {Digit} from "../digits/digit/digit.model";
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GameComponent implements OnInit {
   game$: Observable<Game>;

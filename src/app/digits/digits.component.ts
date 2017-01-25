@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Digit} from "./digit/digit.model";
 import {DigitsService} from "./digits.service";
 import {Observable} from "rxjs";
@@ -8,7 +8,8 @@ import {Dice} from "../dices/dice/dice.model";
 @Component({
   selector: 'app-digits',
   templateUrl: './digits.component.html',
-  styleUrls: ['./digits.component.scss']
+  styleUrls: ['./digits.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DigitsComponent implements OnInit {
 

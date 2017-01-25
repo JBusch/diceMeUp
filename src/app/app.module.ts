@@ -19,7 +19,6 @@ import {DiceComponent} from './dices/dice/dice.component';
 import {DiceService} from "./dices/dices.service";
 import {CupComponent} from './cup/cup.component';
 import {dicesReducer} from "./dices/dices.reducer";
-import {diceReducer} from "./dices/dice/dice.reducer";
 import {DiceActions} from "./dices/dice/dice.actions";
 import {ResultCupComponent} from "./result-cup/result-cup.component";
 import {DicesActions} from "./dices/dices.actions";
@@ -58,7 +57,6 @@ export function instrumentOptions() {
     RouterModule.forRoot(RouteDefinitions),
     StoreModule.provideStore({
       dices: dicesReducer,
-      dice: diceReducer,
       game: gameReducer,
       digits: digitsReducer
     }),

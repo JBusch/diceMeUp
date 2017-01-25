@@ -37,37 +37,85 @@ app-dice {
 .dice {
   &-side-1 {
     transform: rotateY(0deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(0, 25px);
+    }
   }
   &-side-2 {
     transform: rotateX(180deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(-15px, 0px);
+    }
+    .circle:nth-child(2) {
+      transform: translate(15px, 58px);
+    }
   }
   &-side-3 {
     transform: rotateY(90deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(0, 2px);
+    }
+    .circle:nth-child(2) {
+      transform: translate(33px, 58px);
+    }
+    .circle:nth-child(3) {
+      transform: translate(-25px, 30px);
+    }
   }
   &-side-4 {
     transform: rotateY(-90deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(0, 2px);
+    }
+    .circle:nth-child(2) {
+      transform: translate(30px, 2px);
+    }
+    .circle:nth-child(3) {
+      transform: translate(-56px, 58px);
+    }
+    .circle:nth-child(4) {
+      transform: translate(30px, 18px);
+    }
   }
   &-side-5 {
     transform: rotateX(90deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(0, 2px);
+    }
+    .circle:nth-child(2) {
+      transform: translate(30px, 2px);
+    }
+    .circle:nth-child(3) {
+      transform: translate(-30px, 30px);
+    }
+    .circle:nth-child(4) {
+      transform: translate(-15px, 23px);
+    }
+    .circle:nth-child(5) {
+      transform: translate(15px, 23px)
+    }
   }
   &-side-6 {
     transform: rotateX(-90deg) translateZ($dice-perspective);
+    .circle:nth-child(1) {
+      transform: translate(0, 0px);
+    }
+    .circle:nth-child(2) {
+      transform: translate(0px, 0px);
+    }
+    .circle:nth-child(3) {
+      transform: translate(0px, 0px);
+    }
+    .circle:nth-child(4) {
+      transform: translate(0px, 10px);
+    }
+    .circle:nth-child(5) {
+      transform: translate(0px, 10px)
+    }
+    .circle:nth-child(6) {
+      transform: translate(0px, 10px)
+    }
   }
-  //&-1 {
-  //  left: 0;
-  //}
-  //&-2 {
-  //  left: 100px;
-  //}
-  //&-3 {
-  //  left: 200px;
-  //}
-  //&-4 {
-  //  left: 300px;
-  //}
-  //&-5 {
-  //  left: 400px;
-  //}
   &-show-1 {
     transform: translateZ($dice-perspective) rotateY(0deg);
   }
@@ -87,3 +135,18 @@ app-dice {
     transform: translateZ($dice-perspective) rotateX(90deg);
   }
 }
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background: lighten(purple, 10%);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+button {
+  position: absolute;
+  top: -20px;
+}
+
+
