@@ -27,15 +27,34 @@ import {DigitsActions} from "./digits/digits.actions";
 import {CupActions} from "./cup/cup.actions";
 import {gameReducer} from "./game/game.reducer";
 import {GameActions} from "./game/game.actions";
+import {StoreLogMonitorModule} from '@ngrx/store-log-monitor';
+import {AngularFireModule, FirebaseAppConfig} from "angularfire2";
+import {initializeApp, database} from 'firebase';
+import {UsersService} from "./services/users.service";
+import {EffectsModule} from '@ngrx/effects'
+import {MainEffects} from "./effects/main.effects";
+import {SignupComponent} from "./signup/signup.component";
+import {LoginComponent} from "./login/login.component";
+import {LoginEmailComponent} from "./login-email/login-email.component";
+import {PlayerAreaComponent} from "./player-area/player-area.component";
+import {AuthGuard} from "./services/auth-guard.service";
+import {LoginActions} from "./login/login.actions";
+import {loginReducer} from "./login/login.reducer";
+import 'typeface-open-sans';
 
-import {useLogMonitor, StoreLogMonitorModule} from '@ngrx/store-log-monitor';
+// export function instrumentOptions() {
+//   return {
+//     monitor: useLogMonitor({visible: true, position: 'right'})
+//   };
+// }
 
-
-export function instrumentOptions() {
-  return {
-    monitor: useLogMonitor({visible: true, position: 'right'})
-  };
-}
+export const firebaseConfig: FirebaseAppConfig = {
+  apiKey: "AIzaSyCSBOSeEn9ruSCh5B0eaamEQJeDigkjdVc",
+  authDomain: "wdw-diceitup.firebaseapp.com",
+  databaseURL: "https://wdw-diceitup.firebaseio.com",
+  storageBucket: "wdw-diceitup.appspot.com",
+  messagingSenderId: "15314160514",
+};
 
 @NgModule({
   declarations: [
@@ -48,7 +67,11 @@ export function instrumentOptions() {
     DicesComponent,
     DiceComponent,
     CupComponent,
-    ResultCupComponent
+    ResultCupComponent,
+    SignupComponent,
+    LoginComponent,
+    LoginEmailComponent,
+    PlayerAreaComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +81,12 @@ export function instrumentOptions() {
     StoreModule.provideStore({
       dices: dicesReducer,
       game: gameReducer,
-      digits: digitsReducer
+      digits: digitsReducer,
+      login: loginReducer
     }),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     // StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule
+    StoreLogMonitorModule,
     // StoreDevtoolsModule.instrumentOnlyWithExtension()
     // // StoreDevtoolsModule.instrumentStore({
     // //   monitor: useLogMonitor({
@@ -71,6 +95,8 @@ export function instrumentOptions() {
     // //   })
     // // }),
     // StoreLogMonitorModule
+    AngularFireModule.initializeApp(firebaseConfig),
+    EffectsModule.run(MainEffects)
   ],
   providers: [
     DigitActions,
@@ -80,7 +106,10 @@ export function instrumentOptions() {
     DiceActions,
     DicesActions,
     CupActions,
-    GameActions
+    GameActions,
+    LoginActions,
+    UsersService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

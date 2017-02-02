@@ -38,8 +38,6 @@
     <i class="circle"></i>
   </figure>
 </div>
-<button (click)="hero.toggleState()">state</button>
-
 <div *ngIf="dice.selected"
      (click)="unSelectDice(dice)"
      class="dice-container dice-{{ dice.id }} dice-show-{{dice.activeSide}} {{dice.selected ? 'selected' : ''}}">

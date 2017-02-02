@@ -16,12 +16,15 @@ export function gameReducer(state = GameState, action: Action) {
   switch (action.type) {
 
     case GameActions.INCREMENTROUND: {
-      console.log('gameaction', state);
-      return Object.assign({}, state, {countRound: state.countRound + 1});
+      return Object.assign({}, state, {countRound: state.countRound + 1, countRolls: 0});
     }
 
     case GameActions.INCREMENTROLLS: {
       return Object.assign({}, state, {countRolls: state.countRolls + 1});
+    }
+
+    case 'SUPER_SIMPLE_EFFECT_HAS_FINISHED': {
+      console.log('bla bla bla ')
     }
 
     default: {

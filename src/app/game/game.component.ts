@@ -1,5 +1,5 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Store} from "@ngrx/store";
+import {Action, Store} from "@ngrx/store";
 import {Game} from "./game.model";
 import {Observable} from "rxjs";
 import {GameActions} from "./game.actions";
@@ -11,6 +11,7 @@ import {DigitsActions} from "../digits/digits.actions";
 import {DicesActions} from "../dices/dices.actions";
 import {DiceActions} from "../dices/dice/dice.actions";
 import {Digit} from "../digits/digit/digit.model";
+import {UsersService} from "../services/users.service";
 
 @Component({
   selector: 'app-game',
@@ -28,7 +29,8 @@ export class GameComponent implements OnInit {
               private gameActions: GameActions,
               private digitsActions: DigitsActions,
               private dicesActions: DicesActions,
-              private diceActions: DiceActions) {
+              private diceActions: DiceActions,
+              private userService: UsersService) {
     this.game$ = this._store.select('game');
     this.selectedDices$ = this._store.select('dices').pluck('resultDices');
     this.digits$ = this._store.select('digits');
@@ -38,6 +40,7 @@ export class GameComponent implements OnInit {
     this.digits$.subscribe((digits: Digit[]) => {
       this.isAddedDigit = digits.some((digit: Digit) => digit.added);
     });
+    this._store.dispatch({type: 'SUPER_SIMPLE_EFFECT'});
   }
 
   rollDice() {
