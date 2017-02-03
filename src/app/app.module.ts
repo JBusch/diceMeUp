@@ -41,6 +41,7 @@ import {AuthGuard} from "./services/auth-guard.service";
 import {LoginActions} from "./login/login.actions";
 import {loginReducer} from "./login/login.reducer";
 import 'typeface-open-sans';
+import {routerReducer, RouterStoreModule} from "@ngrx/router-store";
 
 // export function instrumentOptions() {
 //   return {
@@ -82,11 +83,13 @@ export const firebaseConfig: FirebaseAppConfig = {
       dices: dicesReducer,
       game: gameReducer,
       digits: digitsReducer,
-      login: loginReducer
+      login: loginReducer,
+      router: routerReducer
     }),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
     // StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule,
+    RouterStoreModule.connectRouter(),
     // StoreDevtoolsModule.instrumentOnlyWithExtension()
     // // StoreDevtoolsModule.instrumentStore({
     // //   monitor: useLogMonitor({

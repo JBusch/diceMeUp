@@ -8,7 +8,9 @@ import {DiceActions} from "./dice/dice.actions";
 import 'rxjs/add/operator/map';
 import {CupActions} from "../cup/cup.actions";
 
-export const DicesState: { dices: Dice[], resultDices: Dice[] } = {
+export type DicesState =  { dices: Dice[], resultDices: Dice[] };
+
+export const initialState = {
   dices: [
     {
       id: 1,
@@ -38,9 +40,10 @@ export const DicesState: { dices: Dice[], resultDices: Dice[] } = {
   resultDices: []
 };
 
+
 const comparator = 'id';
 
-export function dicesReducer(state = DicesState, action: Action) {
+export function dicesReducer(state = initialState, action: Action) {
   switch (action.type) {
 
     case DicesActions.ROLLDICE: {
@@ -86,7 +89,7 @@ export function dicesReducer(state = DicesState, action: Action) {
     }
 
     case DicesActions.RESETDICE: {
-      return DicesState;
+      return initialState;
     }
 
     default: {

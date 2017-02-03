@@ -6,7 +6,9 @@ import {Digit} from './digit/digit.model';
 import {DigitActions} from "./digit/digit.actions";
 import 'rxjs/add/operator/map';
 
-export const DigitsState: Digit[] = [
+export type DigitsState = Digit[];
+
+export const initialState: DigitsState = [
   {
     id: 1,
     label: '1er',
@@ -128,7 +130,7 @@ export const DigitsState: Digit[] = [
 
 const comparator = 'id';
 
-export function digitsReducer(state = DigitsState, action: Action) {
+export function digitsReducer(state = initialState, action: Action) {
   switch (action.type) {
 
     case DigitsActions.TOGGLEADDABLE: {

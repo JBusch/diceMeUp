@@ -1,8 +1,8 @@
 @import "../scss/variables";
 
 :host {
-  font-family: 'amiko', 'Amiko', serif;
-  //font-family: $sans-body;
+  //font-family: 'amiko', 'Amiko', serif;
+  font-family: $sans-body;
   display: flex;
   box-sizing: border-box;
   justify-content: center;

@@ -3,6 +3,7 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
 import {Router} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {LoginActions} from "../login/login.actions";
+import {AppState} from "../app.reducers";
 
 
 @Component({
@@ -12,7 +13,7 @@ import {LoginActions} from "../login/login.actions";
 })
 export class LoginEmailComponent {
   constructor(private router: Router,
-              private _store: Store<any>,
+              private _store: Store<AppState>,
               private loginActions: LoginActions) {
     this._store.select('login').subscribe((result: any) => {
       if (result.loggedIn) {

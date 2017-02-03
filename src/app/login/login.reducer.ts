@@ -2,14 +2,16 @@ import {Action} from '@ngrx/store';
 import 'rxjs/add/operator/map';
 import {LoginActions} from "./login.actions";
 
-export const LoginState = {
+export type LoginState = {};
+
+export const initialState = {
   loggedIn: false,
   credentials: ''
 };
 
-const comparator = 'id';
 
-export function loginReducer(state = LoginState, action: Action) {
+const comparator = 'id';
+export function loginReducer(state = initialState, action: Action) {
   switch (action.type) {
 
     case LoginActions.SUCCESS: {
