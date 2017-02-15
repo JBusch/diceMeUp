@@ -14,8 +14,23 @@ export class LoginActions {
     }
   }
 
+  static SIGNUP = '[Login] Signup attempt';
+
+  signUp(user: IUserCredentials): Action {
+    return {
+      type: LoginActions.SIGNUP,
+      payload: user
+    }
+  }
+
   static SUCCESS = '[Login] Login success';
   static ERROR = '[Login] Login error';
+
+  static SIGNUP_SUCCESS = '[Login] Signup success';
+  static SIGNUP_ERROR = '[Login] Signup error';
+
+  static SIGNUP_CREATE_USER_SUCCESS = '[Login] Create User success';
+  static SIGNUP_SET_USERNAME_SUCCESS = '[Login] Set Username success';
 
   // static SELECTDICE = '[Dice] Select Dice';
   //

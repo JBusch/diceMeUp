@@ -1,4 +1,24 @@
+// TYPE
 $sans-heading: 'Roboto', sans-serif;
 $sans-body: 'Open Sans', sans-serif;
 
+$sans-button: $sans-heading;
+
+// GRID AN POSITIONING
 $padding-default: 20px;
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+// colors
+
+$black: #333;
+
+$grey-dark: lighten($black, 20%);
+$grey: lighten($black, 40%);
+$grey-light: lighten($black, 70%);
+
+$purple: purple;
+$purple-dark: darken($purple, 10%);
+
+$green: green;

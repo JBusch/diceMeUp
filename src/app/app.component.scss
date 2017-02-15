@@ -13,6 +13,7 @@
 
 main {
   width: 90vw;
+  min-height: 50vh;
   background-color: purple;
   padding: $padding-default;
   display: flex;

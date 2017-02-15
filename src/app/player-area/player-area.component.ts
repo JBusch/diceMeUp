@@ -19,18 +19,18 @@ export class PlayerAreaComponent implements OnInit {
     this.users$ = af.database;
 
 
-    this.af.auth.subscribe(auth => {
-      if (auth) {
-        console.log(auth);
-        console.log(<FirebaseObjectObservable<any>>this.users$.object('users'));
-        this.users$.object('users/' + auth.uid).set({name: 'Hoche', age: 22});
-        this.users$.object('users/' + auth.uid).subscribe(user => {
-          console.log(user.$exists());
-          this.name = user.name;
-        });
-        console.log(this.name);
-      }
-    });
+    // this.af.auth.subscribe(auth => {
+    //   if (auth) {
+    //     console.log(auth);
+    //     console.log(<FirebaseObjectObservable<any>>this.users$.object('users'));
+    //     this.users$.object('users/' + auth.uid).set({name: 'Hoche', age: 22});
+    //     this.users$.object('users/' + auth.uid).subscribe(user => {
+    //       console.log(user.$exists());
+    //       this.name = user.name;
+    //     });
+    //     console.log(this.name);
+    //   }
+    // });
 
   }
 
@@ -40,6 +40,10 @@ export class PlayerAreaComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+
+  goToSignIn() {
+    this.router.navigateByUrl('/signup');
+  }
 
   ngOnInit() {
     // console.log(this.users$);

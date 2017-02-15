@@ -1,12 +1,22 @@
-<div class="form-container">
+<div *ngIf="!loginState" class="form-container">
   <h2>Join now</h2>
 
   <!--<span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>-->
 
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-    <input type="text" placeholder="Username" (ngModel)="username" name="username" class="txt" required>
-    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
-    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
-    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
+    <label for="username">Username</label>
+    <input id="username" type="text" placeholder="Username" (ngModel)="username" name="username" class="txt" required>
+    <label for="email">E-Mail</label>
+    <input id="email" type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+    <label for="password">Username</label>
+    <input id="password" type="password" placeholder="Password" (ngModel)="password" name="password" class="txt"
+           required>
+    <button type="submit" [disabled]="!formData.valid || formData.pristine" class="basic-btn">Create my account
+    </button>
   </form>
+</div>
+
+<div *ngIf="loginState" class="isLoggedIn">
+  Sie sind bereits eingeloggt:
+  {{ username }}
 </div>

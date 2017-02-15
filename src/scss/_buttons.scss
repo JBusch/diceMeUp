@@ -1,0 +1,31 @@
+button {
+  font-family: $sans-button;
+  background: $purple-dark;
+  color: #fff;
+  cursor: pointer;
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 45px;
+  margin: 1em auto 2em;
+  position: relative;
+  text-decoration: none;
+  vertical-align: middle;
+  border: 2px solid $purple-dark;
+  width: 100%;
+  box-shadow: 4px 4px 5px $grey;
+  transition: all 200ms ease-in-out;
+  &:hover, &:focus {
+    background: $purple-dark;
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px $grey;
+  }
+
+  &[disabled] {
+    background: $grey-light;
+    border: 2px solid $grey;
+    color: $grey-dark;
+    box-shadow: none;
+  }
+
+}

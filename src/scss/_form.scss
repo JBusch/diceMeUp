@@ -1,0 +1,37 @@
+form {
+  border: 1px solid $purple-dark;
+  padding: 20px;
+}
+
+label {
+  color: $black;
+  font-size: 16px;
+  margin: 0;
+}
+
+input {
+  border: 1px solid $purple;
+  height: 20px;
+  margin: 2px 0 10px 0;
+  padding: 5px;
+
+  &.ng-dirty.ng-valid {
+    border: 1px solid $green;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  &:focus:-moz-placeholder {
+    color: transparent;
+  }
+  /* FF 4-18 */
+  &:focus::-moz-placeholder {
+    color: transparent;
+  }
+  /* FF 19+ */
+  &:focus:-ms-input-placeholder {
+    color: transparent;
+  }
+  /* IE 10+ */
+}
