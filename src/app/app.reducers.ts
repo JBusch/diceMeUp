@@ -1,14 +1,14 @@
-import {RouterState} from "@ngrx/router-store";
+import {RouterState} from '@ngrx/router-store';
 import {DicesState}  from './dices/dices.reducer';
-import {GameState} from "./game/game.reducer";
-import {DigitsState} from "./digits/digits.reducer";
-import {LoginState} from "./login/login.reducer";
+import {GameState} from './game/game.reducer';
+import {DigitsState} from './digits/digits.reducer';
+import {LoginState} from './login/login.reducer';
 
 export interface AppState {
-  dices: DicesState,
-  game: GameState,
-  digits: DigitsState,
-  login: LoginState,
+  dices: DicesState;
+  game: GameState;
+  digits: DigitsState;
+  login: LoginState;
   router: RouterState;
 }
 

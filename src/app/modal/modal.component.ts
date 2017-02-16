@@ -1,16 +1,21 @@
-import {Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {AppState} from './app.reducers';
+import {AppState} from '../app.reducers';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.Default
 })
-export class AppComponent implements OnInit {
-  title = 'diceItUp!!';
-  test;
+export class ModalComponent implements OnInit {
+  @Input() test;
+
+  title: string;
+  message: string;
+
 
   constructor(private _store: Store<AppState>,
               private cdRef: ChangeDetectorRef) {
@@ -20,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._store.select('login').subscribe((result: any) => {
       console.log(result);
-      this.test = result.loggedIn + 'dei mudder';
+      this.title = result.loggedIn;
       // this.cdRef.markforcheck();
     });
 

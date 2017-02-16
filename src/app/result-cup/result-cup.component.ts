@@ -1,7 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {Dice} from "../dices/dice/dice.model";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {Dice} from '../dices/dice/dice.model';
 
 @Component({
   selector: 'app-result-cup',
