@@ -12,6 +12,8 @@ import {AppState} from '../app.reducers';
 })
 export class ModalComponent implements OnInit {
   @Input() test;
+  isShown: boolean = false;
+
 
   title: string;
   message: string;
@@ -25,7 +27,7 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
     this._store.select('login').subscribe((result: any) => {
       console.log(result);
-      this.title = result.loggedIn;
+      this.isShown = result.loggedIn;
       // this.cdRef.markforcheck();
     });
 

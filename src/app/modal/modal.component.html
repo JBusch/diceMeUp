@@ -1,3 +1,6 @@
-<h1>{{ title }}, {{ test }}</h1>
-<p>{{ message }}</p>
-<button type="button">Close</button>
+<div *ngIf="isShown" class="modal">
+  <h1>{{ title }}, {{ test }}</h1>
+  <p>{{ message }}</p>
+  <button type="button" (click)="isShown = !isShown">Close</button>
+</div>
+

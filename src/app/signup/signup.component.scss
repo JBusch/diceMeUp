@@ -1,13 +1,14 @@
-@import "../../styles";
+@import '../../scss/variables';
+@import '../../scss/mixins';
 
 :host {
   color: $black;
   background-color: #fff;
   border: 1px solid $purple-dark;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   flex: 1 1 0;
+  justify-content: center;
 
   @include tablet {
     font-size: 38px;
@@ -24,6 +25,7 @@ h1, h2 {
 
 form {
   width: 100%;
+  max-width: 25vw;
   display: flex;
   flex-direction: column;
   flex: 1 1 0;

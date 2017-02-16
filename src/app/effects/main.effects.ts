@@ -16,13 +16,6 @@ export class MainEffects {
     console.log(this.actions$);
   }
 
-  @Effect() update$ = this.actions$
-    .ofType('SUPER_SIMPLE_EFFECT')
-    .switchMap(() =>
-      Observable.of({type: "SUPER_SIMPLE_EFFECT_HAS_FINISHED"})
-    );
-
-
   @Effect() login$ = this.actions$
   // Listen for the 'LOGIN' action
     .ofType(LoginActions.LOGIN)
@@ -39,18 +32,23 @@ export class MainEffects {
   @Effect() signup$ = this.actions$
   // Listen for the 'LOGIN' action
     .ofType(LoginActions.SIGNUP)
-    .switchMap((action) => {
-      return Observable.forkJoin(Observable.fromPromise(<Promise<FirebaseAuthState>>this.af.auth.createUser({
+    .switchMap((action) =>
+        // return Observable.forkJoin(Observable.fromPromise(<Promise<FirebaseAuthState>>this.af.auth.createUser({
+        //     email: action.payload.email,
+        //     password: action.payload.password
+        //   })),
+        //   Observable.of(action.payload)
+        // )
+        Observable.fromPromise(<Promise<FirebaseAuthState>>this.af.auth.createUser({
           email: action.payload.email,
           password: action.payload.password
-        })),
-        Observable.of(action.payload)
-      )
+        })), (action, user) => ({action, user})
+
       // return Observable.fromPromise(<Promise<FirebaseAuthState>>this.af.auth.createUser({
       //   email: action.payload.email,
       //   password: action.payload.password
       // }))
-    })
+    )
 
     .map((payload) => {
       // console.log('in effect', payload);
@@ -66,16 +64,16 @@ export class MainEffects {
   @Effect() signupSuccess$ = this.actions$
   // Listen for the 'LOGIN' action
     .ofType(LoginActions.SIGNUP_SUCCESS)
-    .switchMap((action) => {
+    .switchMap((action: any) => {
       console.log('signupSuccess$', action);
       // return this.af.database.object('users/' + action.payload.auth.uid);
       // console.log((<FirebaseObjectObservable<any>>this.af.database.object('usernames/' + action.payload[1].username)).set(action.payload[0].uid),
       //   this.af.database.object('users/' + action.payload[0].uid).set({name: action.payload[1].username, age: 666}));
       return Observable.forkJoin(
-        Observable.fromPromise(<Promise<any>>this.af.database.object('users/' + action.payload[0].uid).set({
-          username: action.payload[1].username
+        Observable.fromPromise(<Promise<any>>this.af.database.object('users/' + action.payload.user.uid).set({
+          username: action.payload.action.payload.username
         })),
-        Observable.fromPromise(<Promise<any>>this.af.database.object('usernames/' + action.payload[1].username).set(action.payload[0].uid)),
+        Observable.fromPromise(<Promise<any>>this.af.database.object('usernames/' + action.payload.action.payload.username).set(action.payload.user.uid)),
         Observable.of(action.payload)
       )
         .map((result) => {
